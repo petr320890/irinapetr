@@ -1,91 +1,72 @@
-{\rtf1\ansi\ansicpg1251\cocoartf2821
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 .AppleSystemUIFontMonospaced-Regular;}
-{\colortbl;\red255\green255\blue255;\red14\green14\blue14;}
-{\*\expandedcolortbl;;\cssrgb\c6700\c6700\c6700;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl324\slmult1\pardirnatural\partightenfactor0
+/* Подключаем красивый шрифт */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
 
-\f0\fs28 \cf2 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');\
-\
-body, html \{\
-    margin: 0;\
-    padding: 0;\
-    font-family: 'Playfair Display', serif;\
-    color: #fff;\
-    text-align: center;\
-    background: #000;\
-\}\
-\
-.background \{\
-    position: fixed;\
-    width: 100%;\
-    height: 100%;\
-    background: url('https://source.unsplash.com/1600x900/?wedding') center/cover no-repeat;\
-    z-index: -1;\
-\}\
-\
-.overlay \{\
-    position: absolute;\
-    width: 100%;\
-    height: 100%;\
-    background: rgba(0, 0, 0, 0.6);\
-\}\
-\
-.container \{\
-    position: relative;\
-    padding: 50px 20px;\
-\}\
-\
-h1 \{\
-    font-size: 50px;\
-    margin-bottom: 10px;\
-\}\
-\
-h2 \{\
-    font-size: 28px;\
-    margin-bottom: 20px;\
-\}\
-\
-p, li \{\
-    font-size: 18px;\
-    line-height: 1.5;\
-\}\
-\
-.map-button \{\
-    display: inline-block;\
-    margin-top: 15px;\
-    padding: 12px 20px;\
-    background: #fff;\
-    color: #000;\
-    text-decoration: none;\
-    border-radius: 5px;\
-    font-size: 18px;\
-    transition: 0.3s;\
-\}\
-\
-.map-button:hover \{\
-    background: #ddd;\
-\}\
-\
-.schedule, .info, .note, .contact \{\
-    margin-top: 40px;\
-\}\
-\
-ul \{\
-    list-style: none;\
-    padding: 0;\
-\}\
-\
-li \{\
-    margin: 8px 0;\
-\}\
-\
-a \{\
-    color: #FFD700;\
-    text-decoration: none;\
-    font-weight: bold;\
-\}\
-\
-a:hover \{\
-    text-decoration: underline;\
-\}}
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Playfair Display', serif;
+    color: #fff;
+    text-align: center;
+    background: #000;
+}
+
+/* Фон с картинкой */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url('https://source.unsplash.com/1600x900/?wedding-couple') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Затемнение */
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* Контент */
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Анимация появления */
+.fade-in {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeIn 1.5s forwards;
+}
+
+.delay {
+    animation-delay: 0.5s;
+}
+
+/* Кнопка */
+.scroll-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 24px;
+    background: #fff;
+    color: #000;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.scroll-button:hover {
+    background: #ddd;
+}
+
+/* Ключевые кадры анимации */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
