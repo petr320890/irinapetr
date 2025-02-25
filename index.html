@@ -9,39 +9,38 @@
 </head>
 <body>
 
-  <!-- Главная секция с фоновым изображением и именами -->
-  <section class="hero">
+  <!-- Блок 1: Шапка / Главная секция (Hero) -->
+  <header class="hero" id="top">
     <div class="hero-overlay"></div>
-    <div class="hero-content fade-in">
+    <div class="hero-content fade-up">
       <h1>Петр & Ирина</h1>
       <h2>18 сентября 2025</h2>
-      <a href="#details" class="scroll-button">Подробнее</a>
+      <a href="#info" class="scroll-button">Подробнее</a>
     </div>
-  </section>
+  </header>
 
-  <!-- Секция с основной информацией о свадьбе -->
-  <section id="details" class="details fade-in">
+  <!-- Блок 2: Основная информация -->
+  <section class="block block-info fade-up" id="info">
     <h2>О Мероприятии</h2>
     <p>
-      Приглашаем вас на торжество, которое состоится в 
+      Дорогие друзья! Приглашаем вас разделить радостное событие — нашу свадьбу!
+      <br>
+      Мы ждём вас <strong>18 сентября 2025</strong> в
       <strong>DUE TO LOVE, Подольский район, п. Быково, ул. Луговая, 17</strong>.
-      Мы будем счастливы разделить с вами этот особенный день!
     </p>
-
-    <!-- Кнопка-ссылка, открывающая Google Maps -->
     <a 
       href="https://maps.google.com/?q=55.431,37.555" 
       target="_blank" 
       class="map-button"
     >
-      Открыть местоположение
+      Открыть на карте
     </a>
   </section>
 
-  <!-- Секция с таймингом -->
-  <section class="schedule fade-in">
+  <!-- Блок 3: Тайминг свадьбы -->
+  <section class="block block-timing fade-up">
     <h2>Тайминг</h2>
-    <ul>
+    <ul class="timeline">
       <li><strong>15:00</strong> — Сбор гостей</li>
       <li><strong>16:00</strong> — Церемония</li>
       <li><strong>17:00</strong> — Банкет</li>
@@ -49,44 +48,66 @@
     </ul>
   </section>
 
-  <!-- Секция с дресс-кодом и доп. информацией -->
-  <section class="extra-info fade-in">
-    <h2>Дополнительная информация</h2>
+  <!-- Блок 4: Dress-код с картинками -->
+  <section class="block block-dresscode fade-up">
+    <h2>Dress-код</h2>
     <p>
-      <strong>Дресс-код:</strong> Black. 
+      Стиль: <strong>Black</strong>. Будем рады вашим элегантным образам.
+      <br>
       <a 
-        href="https://www.pinterest.com/search/pins/?q=black%20wedding%20dress%20code" 
+        href="https://www.pinterest.com/search/pins/?q=black%20wedding%20dress%20code"
         target="_blank"
+        class="pinterest-link"
       >
-        Идеи образов
+        Идеи на Pinterest
       </a>
     </p>
-    <p><strong>Мероприятие 18+.</strong> Без детей.</p>
+
+    <!-- Небольшая галерея/примеры -->
+    <div class="dress-gallery">
+      <!-- Изображения можно менять по вкусу: ссылки на фото в styles.css или здесь -->
+      <figure>
+        <img src="https://source.unsplash.com/400x500/?black-dress,wedding" alt="Black dress code">
+        <figcaption>Пример #1</figcaption>
+      </figure>
+      <figure>
+        <img src="https://source.unsplash.com/400x500/?black-suit,elegant" alt="Black suit">
+        <figcaption>Пример #2</figcaption>
+      </figure>
+      <figure>
+        <img src="https://source.unsplash.com/400x500/?black-outfit,elegant" alt="Dress code idea">
+        <figcaption>Пример #3</figcaption>
+      </figure>
+    </div>
   </section>
 
-  <!-- Секция с контактами организатора -->
-  <section class="contact fade-in">
-    <h2>Контакты организатора</h2>
-    <p>+7 999 123-45-67 (Мария)</p>
+  <!-- Блок 5: Дополнительные детали -->
+  <section class="block block-extra fade-up">
+    <h2>Важная информация</h2>
+    <p>
+      Мероприятие <strong>18+</strong>, без детей.  
+      <br>
+      Если у вас есть вопросы — звоните организатору:
+    </p>
+    <p class="organizer">+7 999 123-45-67 (Мария)</p>
   </section>
 
-  <!-- Ссылка "Наверх" (если потребуется) -->
-  <a href="#top" class="back-to-top">↑ Наверх</a>
+  <!-- Кнопка "Наверх" -->
+  <a href="#top" class="back-to-top">↑</a>
 
+  <!-- Скрипт плавного скролла по якорям -->
   <script>
-    // Пример плавного скролла по якорным ссылкам
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth'
-          });
+          target.scrollIntoView({behavior: 'smooth'});
         }
       });
     });
   </script>
 </body>
 </html>
+
 
