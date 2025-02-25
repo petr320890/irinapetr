@@ -1,36 +1,32 @@
-/* Подключаем каллиграфический шрифт (пример: Great Vibes) */
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
-
-/* Дополнительно можно подключить другой шрифт для кнопок, например, Montserrat */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+/* Шрифты: элегантный + нейтральный */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;700&display=swap');
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-/* Оформление body */
 html, body {
-  height: 100%;
+  width: 100%;
+  min-height: 100%;
   font-family: 'Montserrat', sans-serif;
-  color: #fff;
-  background: #000;
-  scroll-behavior: smooth; /* Плавная прокрутка (альтернативно можно скриптом) */
+  background: #fff;
+  color: #333;
 }
 
-/* --- 1. Главная секция (Hero) --- */
+/* ---------- HERO (шапка) ---------- */
 .hero {
   position: relative;
-  width: 100%;
   height: 100vh;
   background: url('https://source.unsplash.com/1600x900/?wedding') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
-.hero-overlay {
+.overlay {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -42,125 +38,178 @@ html, body {
 .hero-content {
   position: relative;
   z-index: 1;
-  text-align: center;
+  color: #fff;
 }
 
-/* Шрифты для главного заголовка */
+/* Главный заголовок (с каллиграфическим шрифтом) */
 .hero-content h1 {
   font-family: 'Great Vibes', cursive;
-  font-size: 70px;
+  font-size: 80px;
   margin-bottom: 20px;
 }
 
-.hero-content h2 {
-  font-size: 32px;
-  font-weight: 400;
+.hero-date {
+  font-size: 24px;
   margin-bottom: 30px;
 }
 
-/* Кнопка "Подробнее" */
-.scroll-button {
-  padding: 12px 24px;
+/* Кнопка "Смотреть подробности" */
+.btn-scroll {
+  display: inline-block;
+  padding: 12px 20px;
   background: #fff;
   color: #000;
   text-decoration: none;
-  font-size: 18px;
-  border-radius: 8px;
+  border-radius: 6px;
   transition: background 0.3s;
 }
 
-.scroll-button:hover {
-  background: #ddd;
+.btn-scroll:hover {
+  background: #ffd;
 }
 
-/* --- 2. Секция деталей --- */
-section {
-  padding: 60px 20px;
-  max-width: 800px;
+/* ---------- Блоки (section) ---------- */
+.block-section {
+  width: 100%;
+  max-width: 1100px;
   margin: 0 auto;
+  padding: 60px 20px;
   text-align: center;
 }
 
-.details p {
+.block-section h2 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 50px;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+/* Контейнер для картинок + текста */
+.block-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.block-image img {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 10px;
+}
+
+.block-text {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: left;
   font-size: 18px;
   line-height: 1.6;
+}
+
+/* ---------- Тайминг ---------- */
+.schedule ul {
+  list-style: none;
+  margin-top: 30px;
+}
+
+.schedule li {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+/* ---------- Локация (map) ---------- */
+.location p {
+  font-size: 18px;
   margin-bottom: 20px;
 }
 
 .map-button {
   display: inline-block;
-  margin: 10px 0;
-  padding: 10px 20px;
-  background: #fff;
-  color: #000;
+  padding: 12px 20px;
+  background: #000;
+  color: #fff;
   text-decoration: none;
-  font-size: 16px;
   border-radius: 6px;
-  transition: background 0.3s;
+  transition: 0.3s;
 }
 
 .map-button:hover {
-  background: #ddd;
+  background: #333;
 }
 
-/* --- 3. Тайминг (Schedule) --- */
-.schedule ul {
-  list-style: none;
-  margin-top: 20px;
-}
-
-.schedule li {
+/* ---------- Дресс-код (с галереей) ---------- */
+.dress-code p {
   font-size: 18px;
-  margin: 10px 0;
+  line-height: 1.6;
+  margin: 20px auto;
+  max-width: 600px;
 }
 
-.schedule strong {
-  font-weight: bold;
+/* Галерея примеров */
+.dress-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin: 30px 0;
 }
 
-/* --- 4. Доп. информация (Dress code и т.п.) --- */
-.extra-info a {
-  color: #FFD700;
-  text-decoration: underline;
-  font-weight: bold;
+.dress-item {
+  width: 200px;
+  text-align: center;
 }
 
-/* --- 5. Контакты --- */
+.dress-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.dress-item p {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+/* ---------- Контакты ---------- */
 .contact p {
   font-size: 18px;
+  max-width: 600px;
+  margin: 10px auto;
+  line-height: 1.6;
 }
 
-/* --- Кнопка "Наверх" --- */
+/* ---------- Кнопка "Наверх" ---------- */
 .back-to-top {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  background: #fff;
-  color: #000;
   text-decoration: none;
-  padding: 10px 12px;
+  background: #000;
+  color: #fff;
+  padding: 14px 18px;
   border-radius: 50%;
-  font-size: 24px;
-  opacity: 0.7;
+  font-size: 20px;
   transition: opacity 0.3s;
+  opacity: 0.7;
 }
 
 .back-to-top:hover {
   opacity: 1;
 }
 
-/* --- Анимации (fade-in) --- */
+/* ---------- Плавное появление (пример) ---------- */
 .fade-in {
   opacity: 0;
-  transform: translateY(20px);
   animation: fadeInUp 1s forwards;
-  animation-delay: 0.3s; /* небольшая задержка для плавности */
+  animation-delay: 0.3s;
 }
 
-/* Ключевые кадры для эффекта плавного появления */
 @keyframes fadeInUp {
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
