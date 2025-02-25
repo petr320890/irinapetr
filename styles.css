@@ -1,10 +1,10 @@
-/* Подключаем красивый шрифт */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+/* Подключаем каллиграфический шрифт */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
 body, html {
     margin: 0;
     padding: 0;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Great Vibes', cursive;
     color: #fff;
     text-align: center;
     background: #000;
@@ -35,6 +35,18 @@ body, html {
     z-index: 2;
 }
 
+/* Заголовок с красивым шрифтом */
+h1 {
+    font-size: 72px;
+    margin: 0;
+    font-weight: normal;
+}
+
+h2 {
+    font-size: 36px;
+    margin-top: 10px;
+}
+
 /* Анимация появления */
 .fade-in {
     opacity: 0;
@@ -54,9 +66,10 @@ body, html {
     background: #fff;
     color: #000;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 20px;
     border-radius: 5px;
     transition: 0.3s;
+    font-family: 'Dancing Script', cursive;
 }
 
 .scroll-button:hover {
