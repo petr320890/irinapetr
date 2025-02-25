@@ -2,45 +2,44 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Свадебное приглашение</title>
-  <!-- Подключаем стили -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- Блок 1: Шапка / Главная секция (Hero) -->
-  <header class="hero" id="top">
-    <div class="hero-overlay"></div>
-    <div class="hero-content fade-up">
+  <!-- Блок 1: Обложка / Hero -->
+  <header class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
       <h1>Петр & Ирина</h1>
-      <h2>18 сентября 2025</h2>
-      <a href="#info" class="scroll-button">Подробнее</a>
+      <p class="hero-date">18 сентября 2025</p>
+      <a href="#details" class="btn-scroll">Смотреть подробности</a>
     </div>
   </header>
 
-  <!-- Блок 2: Основная информация -->
-  <section class="block block-info fade-up" id="info">
-    <h2>О Мероприятии</h2>
-    <p>
-      Дорогие друзья! Приглашаем вас разделить радостное событие — нашу свадьбу!
-      <br>
-      Мы ждём вас <strong>18 сентября 2025</strong> в
-      <strong>DUE TO LOVE, Подольский район, п. Быково, ул. Луговая, 17</strong>.
-    </p>
-    <a 
-      href="https://maps.google.com/?q=55.431,37.555" 
-      target="_blank" 
-      class="map-button"
-    >
-      Открыть на карте
-    </a>
+  <!-- Блок 2: Описание мероприятия -->
+  <section id="details" class="block-section">
+    <h2>Наш день</h2>
+    <div class="block-content">
+      <div class="block-image">
+        <!-- Подставьте свою фотографию: -->
+        <img src="https://source.unsplash.com/600x400/?wedding" alt="wedding example" />
+      </div>
+      <div class="block-text">
+        <p>
+          Приглашаем вас отпраздновать наш особенный день в 
+          <strong>DUE TO LOVE, Подольский район, п. Быково, ул. Луговая, 17</strong>.
+          Мы очень хотим, чтобы вы были рядом и разделили с нами радость этого события!
+        </p>
+      </div>
+    </div>
   </section>
 
   <!-- Блок 3: Тайминг свадьбы -->
-  <section class="block block-timing fade-up">
+  <section class="block-section schedule">
     <h2>Тайминг</h2>
-    <ul class="timeline">
+    <ul>
       <li><strong>15:00</strong> — Сбор гостей</li>
       <li><strong>16:00</strong> — Церемония</li>
       <li><strong>17:00</strong> — Банкет</li>
@@ -48,66 +47,76 @@
     </ul>
   </section>
 
-  <!-- Блок 4: Dress-код с картинками -->
-  <section class="block block-dresscode fade-up">
-    <h2>Dress-код</h2>
-    <p>
-      Стиль: <strong>Black</strong>. Будем рады вашим элегантным образам.
-      <br>
-      <a 
-        href="https://www.pinterest.com/search/pins/?q=black%20wedding%20dress%20code"
-        target="_blank"
-        class="pinterest-link"
-      >
-        Идеи на Pinterest
-      </a>
-    </p>
+  <!-- Блок 4: Локация (карта) -->
+  <section class="block-section location">
+    <h2>Как добраться</h2>
+    <p>Адрес: DUE TO LOVE, Подольский район, п. Быково, ул. Луговая, 17</p>
+    <a 
+      class="map-button"
+      href="https://maps.google.com/?q=55.431,37.555"
+      target="_blank"
+    >
+      Открыть местоположение
+    </a>
+  </section>
 
-    <!-- Небольшая галерея/примеры -->
+  <!-- Блок 5: Дресс-код (с картинками) -->
+  <section class="block-section dress-code">
+    <h2>Дресс-код: BLACK</h2>
+    <p>Мероприятие 18+ (без детей). Примеры образов:</p>
     <div class="dress-gallery">
-      <!-- Изображения можно менять по вкусу: ссылки на фото в styles.css или здесь -->
-      <figure>
-        <img src="https://source.unsplash.com/400x500/?black-dress,wedding" alt="Black dress code">
-        <figcaption>Пример #1</figcaption>
-      </figure>
-      <figure>
-        <img src="https://source.unsplash.com/400x500/?black-suit,elegant" alt="Black suit">
-        <figcaption>Пример #2</figcaption>
-      </figure>
-      <figure>
-        <img src="https://source.unsplash.com/400x500/?black-outfit,elegant" alt="Dress code idea">
-        <figcaption>Пример #3</figcaption>
-      </figure>
+      <!-- Замените URL на любые свои фото или ссылки -->
+      <div class="dress-item">
+        <img src="https://source.unsplash.com/200x250/?black-dress1" alt="dress example 1" />
+        <p>Стильное черное платье</p>
+      </div>
+      <div class="dress-item">
+        <img src="https://source.unsplash.com/200x250/?black-suit1" alt="dress example 2" />
+        <p>Элегантный темный костюм</p>
+      </div>
+      <div class="dress-item">
+        <img src="https://source.unsplash.com/200x250/?black-outfit" alt="dress example 3" />
+        <p>Пример total black look</p>
+      </div>
     </div>
-  </section>
-
-  <!-- Блок 5: Дополнительные детали -->
-  <section class="block block-extra fade-up">
-    <h2>Важная информация</h2>
     <p>
-      Мероприятие <strong>18+</strong>, без детей.  
-      <br>
-      Если у вас есть вопросы — звоните организатору:
+      Больше идей можно посмотреть
+      <a 
+        href="https://www.pinterest.com/search/pins/?q=black%20wedding%20dress%20code" 
+        target="_blank"
+      >
+        здесь
+      </a>.
     </p>
-    <p class="organizer">+7 999 123-45-67 (Мария)</p>
   </section>
 
-  <!-- Кнопка "Наверх" -->
-  <a href="#top" class="back-to-top">↑</a>
+  <!-- Блок 6: Контакты (организатор) -->
+  <section class="block-section contact">
+    <h2>Контакты</h2>
+    <p>
+      Если возникли вопросы или нужна дополнительная информация, свяжитесь с нашим организатором:
+    </p>
+    <p><strong>Мария:</strong> +7 999 123-45-67</p>
+  </section>
 
-  <!-- Скрипт плавного скролла по якорям -->
+  <!-- Ссылка "Наверх" (при желании) -->
+  <a href="#" class="back-to-top">Наверх ↑</a>
+
+  <!-- Плавная прокрутка по якорным ссылкам -->
   <script>
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function(e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({behavior: 'smooth'});
+        const targetID = this.getAttribute('href');
+        if (targetID.length > 1) {
+          document.querySelector(targetID).scrollIntoView({ behavior: 'smooth' });
         }
       });
     });
   </script>
+
 </body>
 </html>
+
 
 
