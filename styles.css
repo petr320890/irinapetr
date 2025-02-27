@@ -1,216 +1,221 @@
+/* Подключаем локальный шрифт Passions Conflict */
+@font-face {
+    font-family: 'Passions Conflict';
+    src: url('fonts/PassionsConflictRUS-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
 
-
-/* Подключаем шрифты: Montserrat + Passions Conflict */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Passions+Conflict&display=swap');
-
+/* Основные стили */
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html, body {
-  width: 100%;
-  min-height: 100%;
-  font-family: 'Montserrat', sans-serif; /* основной шрифт */
-  background: #fff;
-  color: #333;
+    width: 100%;
+    min-height: 100%;
+    font-family: 'Montserrat', sans-serif; /* Общий шрифт */
+    background: #fff;
+    color: #333;
 }
 
 /* ---------- HERO (шапка) ---------- */
 .hero {
-  position: relative;
-  height: 100vh;
-  background: url('https://source.unsplash.com/1600x900/?wedding') center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+    position: relative;
+    height: 100vh;
+    background: url('https://source.unsplash.com/1600x900/?wedding') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  top: 0;
-  left: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    top: 0;
+    left: 0;
 }
 
 .hero-content {
-  position: relative;
-  z-index: 1;
-  color: #fff;
+    position: relative;
+    z-index: 1;
+    color: #fff;
 }
 
-/* Главный заголовок с новым шрифтом Passions Conflict */
+/* Главный заголовок с новым локальным шрифтом */
 .hero-content h1 {
-  font-family: 'Passions Conflict', cursive; /* <-- ШРИФТ СМЕНЁН ТУТ */
-  font-size: 80px;
-  margin-bottom: 20px;
-  letter-spacing: 1px;
+    font-family: 'Passions Conflict', cursive;
+    font-size: 80px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
 }
 
 .hero-date {
-  font-size: 24px;
-  margin-bottom: 30px;
+    font-size: 24px;
+    margin-bottom: 30px;
 }
 
+/* Кнопка "Смотреть подробности" */
 .btn-scroll {
-  display: inline-block;
-  padding: 12px 20px;
-  background: #fff;
-  color: #000;
-  text-decoration: none;
-  border-radius: 6px;
-  transition: background 0.3s;
+    display: inline-block;
+    padding: 12px 20px;
+    background: #fff;
+    color: #000;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.3s;
 }
 
 .btn-scroll:hover {
-  background: #ffd;
+    background: #ffd;
 }
 
 /* ---------- Блоки (section) ---------- */
 .block-section {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 60px 20px;
-  text-align: center;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    text-align: center;
 }
 
 .block-section h2 {
-  font-family: 'Passions Conflict', cursive;
-  font-size: 50px;
-  margin-bottom: 20px;
-  color: #000;
+    font-family: 'Passions Conflict', cursive;
+    font-size: 50px;
+    margin-bottom: 20px;
+    color: #000;
 }
 
 /* Контейнер для картинок + текста */
 .block-content {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  align-items: center;
-  justify-content: center;
-  margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
 }
 
 .block-image img {
-  width: 100%;
-  max-width: 600px;
-  border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
 }
 
 .block-text {
-  max-width: 500px;
-  margin: 0 auto;
-  text-align: left;
-  font-size: 18px;
-  line-height: 1.6;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: left;
+    font-size: 18px;
+    line-height: 1.6;
 }
 
 /* ---------- Тайминг ---------- */
 .schedule ul {
-  list-style: none;
-  margin-top: 30px;
+    list-style: none;
+    margin-top: 30px;
 }
 
 .schedule li {
-  font-size: 20px;
-  margin: 10px 0;
+    font-size: 20px;
+    margin: 10px 0;
 }
 
 /* ---------- Локация (map) ---------- */
 .location p {
-  font-size: 18px;
-  margin-bottom: 20px;
+    font-size: 18px;
+    margin-bottom: 20px;
 }
 
 .map-button {
-  display: inline-block;
-  padding: 12px 20px;
-  background: #000;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 6px;
-  transition: 0.3s;
+    display: inline-block;
+    padding: 12px 20px;
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: 0.3s;
 }
 
 .map-button:hover {
-  background: #333;
+    background: #333;
 }
 
 /* ---------- Дресс-код (с галереей) ---------- */
 .dress-code p {
-  font-size: 18px;
-  line-height: 1.6;
-  margin: 20px auto;
-  max-width: 600px;
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 20px auto;
+    max-width: 600px;
 }
 
 /* Галерея примеров */
 .dress-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  margin: 30px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin: 30px 0;
 }
 
 .dress-item {
-  width: 200px;
-  text-align: center;
+    width: 200px;
+    text-align: center;
 }
 
 .dress-item img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
 }
 
 .dress-item p {
-  margin-top: 10px;
-  font-size: 16px;
+    margin-top: 10px;
+    font-size: 16px;
 }
 
 /* ---------- Контакты ---------- */
 .contact p {
-  font-size: 18px;
-  max-width: 600px;
-  margin: 10px auto;
-  line-height: 1.6;
+    font-size: 18px;
+    max-width: 600px;
+    margin: 10px auto;
+    line-height: 1.6;
 }
 
 /* ---------- Кнопка "Наверх" ---------- */
 .back-to-top {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  text-decoration: none;
-  background: #000;
-  color: #fff;
-  padding: 14px 18px;
-  border-radius: 50%;
-  font-size: 20px;
-  transition: opacity 0.3s;
-  opacity: 0.7;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    text-decoration: none;
+    background: #000;
+    color: #fff;
+    padding: 14px 18px;
+    border-radius: 50%;
+    font-size: 20px;
+    transition: opacity 0.3s;
+    opacity: 0.7;
 }
 
 .back-to-top:hover {
-  opacity: 1;
+    opacity: 1;
 }
 
 /* ---------- Эффект fade-in (при желании) ---------- */
 .fade-in {
-  opacity: 0;
-  animation: fadeInUp 1s forwards;
-  animation-delay: 0.3s;
+    opacity: 0;
+    animation: fadeInUp 1s forwards;
+    animation-delay: 0.3s;
 }
 
 @keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
