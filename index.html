@@ -2,47 +2,56 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Свадебное приглашение</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ирина & Петр — Свадебная премьера</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- Блок 1: Обложка / Hero -->
+  <!-- Блок 1: Винтажная Кино-Маркиза / Hero -->
   <header class="hero">
     <div class="overlay"></div>
     <div class="hero-content">
-      <h1>Петр & Ирина</h1> <!-- Здесь мы применим новый шрифт Passions Conflict -->
+      <!-- Текст, стилизованный под вывеску кинотеатра -->
+      <h1 class="marquee-title">ПРЕМЬЕРА<br>ФИЛЬМА<br>"Ирина & Петр"</h1>
       <p class="hero-date">18 сентября 2025</p>
-      <a href="#details" class="btn-scroll">Смотреть подробности</a>
+      <p class="subtext">Lights, Camera, Action!</p>
+      <a href="#details" class="btn-scroll">Вход на площадку</a>
     </div>
   </header>
 
-  <!-- Блок 2: Описание мероприятия -->
+  <!-- Блок 2: Описание мероприятия (с отсылками к кино) -->
   <section id="details" class="block-section">
-    <h2>Наш день</h2>
+    <h2>О Съёмках</h2>
     <div class="block-content">
       <div class="block-image">
-        <img src="https://source.unsplash.com/600x400/?wedding" alt="wedding example" />
+        <!-- Подставьте более подходящее изображение (винтаж, киноплёнка, съёмки) -->
+        <img src="https://source.unsplash.com/600x400/?vintage-film" alt="Cinema wedding" />
       </div>
       <div class="block-text">
         <p>
-          Приглашаем вас отпраздновать наш особенный день в 
+          Добро пожаловать на съёмочную площадку самого романтичного фильма года!  
+          <strong>"Ирина & Петр"</strong> снимается в 
           <strong>DUE TO LOVE, Подольский район, п. Быково, ул. Луговая, 17</strong>.
-          Мы очень хотим, чтобы вы были рядом и разделили с нами радость этого события!
+          Вас ждёт красная дорожка, софиты и незабываемые сцены любви.
+        </p>
+        <p>
+          Вдохновлялись лучшими шедеврами: от <em>“Крёстного отца”</em> до 
+          <em>“Титаника”</em>, от <em>“Друзей”</em> до <em>“Игры престолов”</em>. 
+          Присоединяйтесь к нам, чтобы стать частью этой волшебной истории!
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Блок 3: Тайминг свадьбы -->
+  <!-- Блок 3: Тайминг свадьбы (в формате "съёмочного дня") -->
   <section class="block-section schedule">
-    <h2>Тайминг</h2>
+    <h2>Расписание Съёмок</h2>
     <ul>
-      <li><strong>15:00</strong> — Сбор гостей</li>
-      <li><strong>16:00</strong> — Церемония</li>
-      <li><strong>17:00</strong> — Банкет</li>
-      <li><strong>23:00</strong> — Окончание</li>
+      <li><strong>15:00</strong> — Сбор «актёров» и «съёмочной группы» (гостей)</li>
+      <li><strong>16:00</strong> — Главная сцена: Церемония</li>
+      <li><strong>17:00</strong> — Банкет и афтепати (Official Premiere)</li>
+      <li><strong>23:00</strong> — «Завершение съёмочного дня»</li>
     </ul>
   </section>
 
@@ -59,40 +68,34 @@
     </a>
   </section>
 
-  <!-- Блок 5: Дресс-код (с картинками) -->
+  <!-- Блок 5: Дресс-код (с картинками). Тематический, «Cinema Black» -->
   <section class="block-section dress-code">
-    <h2>Дресс-код: BLACK</h2>
-    <p>Мероприятие 18+ (без детей). Примеры образов:</p>
+    <h2>Дресс-код: Cinema Black</h2>
+    <p>
+      Мероприятие 18+ (без детей). Просим вас одеться словно на <em>красную дорожку</em> — стиль <strong>Black</strong>. 
+      Посмотреть идеи можно <a href="https://www.pinterest.com/search/pins/?q=black%20wedding%20dress%20code" target="_blank">здесь</a>.
+    </p>
     <div class="dress-gallery">
       <div class="dress-item">
-        <img src="https://source.unsplash.com/200x250/?black-dress1" alt="dress example 1" />
-        <p>Стильное черное платье</p>
+        <img src="https://source.unsplash.com/200x250/?black-dress,premiere" alt="dress example 1" />
+        <p>Образ для подружки невесты</p>
       </div>
       <div class="dress-item">
-        <img src="https://source.unsplash.com/200x250/?black-suit1" alt="dress example 2" />
-        <p>Элегантный темный костюм</p>
+        <img src="https://source.unsplash.com/200x250/?black-tuxedo" alt="dress example 2" />
+        <p>Стильный смокинг</p>
       </div>
       <div class="dress-item">
-        <img src="https://source.unsplash.com/200x250/?black-outfit" alt="dress example 3" />
-        <p>Пример total black look</p>
+        <img src="https://source.unsplash.com/200x250/?red-carpet" alt="dress example 3" />
+        <p>Пример наряда «Red Carpet»</p>
       </div>
     </div>
-    <p>
-      Больше идей можно посмотреть
-      <a 
-        href="https://www.pinterest.com/search/pins/?q=black%20wedding%20dress%20code" 
-        target="_blank"
-      >
-        здесь
-      </a>.
-    </p>
   </section>
 
   <!-- Блок 6: Контакты (организатор) -->
   <section class="block-section contact">
-    <h2>Контакты</h2>
+    <h2>Координатор Съёмок</h2>
     <p>
-      Если возникли вопросы или нужна дополнительная информация, свяжитесь с нашим организатором:
+      У вас остались вопросы? Свяжитесь с нашим «режиссёром по организационным вопросам»:
     </p>
     <p><strong>Мария:</strong> +7 999 123-45-67</p>
   </section>
