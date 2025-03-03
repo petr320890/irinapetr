@@ -47,7 +47,6 @@ document.querySelectorAll(".block-9 .scrollable-gallery img, .block-10 .scrollab
 document.querySelector("#image-modal .close").addEventListener("click", function() {
   document.getElementById("image-modal").style.display = "none";
 });
-
 // Закрытие модального окна при клике вне изображения
 document.getElementById("image-modal").addEventListener("click", function(e) {
   if (e.target === this) {
