@@ -1,228 +1,138 @@
-/* Подключаем подходящий ретро-шрифт для "кино-вывески". 
-   Пример: 'Limelight' или 'Alfa Slab One' могут подойти для винтажной маркизы 
-*/
-@import url('https://fonts.googleapis.com/css2?family=Limelight&family=Montserrat:wght@400;700&display=swap');
-
-/* Общие стили */
+/* Сброс и глобальные стили */
 * {
+  margin: 0; 
+  padding: 0; 
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+}
+body {
+  font-family: Arial, sans-serif; 
+  color: #fff;
+  background: #000;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 10px;
+}
+p {
+  margin-bottom: 15px;
+  line-height: 1.5;
 }
 
-html, body {
-  width: 100%;
-  min-height: 100%;
-  background: #fff;
-  color: #333;
-  font-family: 'Montserrat', sans-serif;
-}
-
-/* ---------- HERO (кино-маркиза) ---------- */
-.hero {
+/* Базовый стиль для блоков */
+.block {
   position: relative;
-  height: 100vh;
-  background: url('https://source.unsplash.com/1600x900/?vintage-cinema') center/cover no-repeat;
+  width: 100%;
+  min-height: 80vh;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  padding: 40px 20px;
 }
-
 .overlay {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.6);
   top: 0;
   left: 0;
-}
-
-/* Стилизуем текст под "ретро-кинотеатральную" вывеску */
-.hero-content {
-  position: relative;
+  background: rgba(0,0,0,0.3);
   z-index: 1;
-  color: #fff;
+}
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-/* Главный заголовок (маркиза) */
-.marquee-title {
-  font-family: 'Limelight', cursive; /* шрифт для винтажной маркизы */
-  font-size: 64px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  line-height: 1.2;
-  margin-bottom: 20px;
+/* Блок 1 */
+.block-1-bg {
+  background: url('images/block1.jpg') center/cover no-repeat;
 }
 
-.hero-date {
-  font-size: 24px;
+/* Блок 2 */
+.block-2-bg {
+  background: url('images/block2.jpg') center/cover no-repeat;
+}
+
+/* Блок 3 (Обратный отсчёт) */
+.block-3-bg {
+  background: url('images/block3.jpg') center/cover no-repeat;
+}
+#countdown-timer {
+  background: rgba(0,0,0,0.5);
+  padding: 20px;
+  border-radius: 10px;
+  display: inline-block;
+}
+#countdown-timer h3 {
   margin-bottom: 10px;
-  font-weight: 700;
 }
-
-.subtext {
-  font-style: italic;
-  margin-bottom: 30px;
-  font-size: 18px;
-}
-
-/* Кнопка */
-.btn-scroll {
-  display: inline-block;
-  padding: 12px 20px;
-  background: #FFDF00; /* Золотой тон */
-  color: #000;
-  text-decoration: none;
-  border-radius: 6px;
-  transition: background 0.3s;
-}
-
-.btn-scroll:hover {
-  background: #ffe466;
-}
-
-/* ---------- Общий стилинг блоков ---------- */
-.block-section {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 60px 20px;
-  text-align: center;
-}
-
-.block-section h2 {
-  font-family: 'Limelight', cursive; /* тот же винтажный шрифт для заголовков */
-  font-size: 48px;
-  margin-bottom: 30px;
-  color: #000;
-}
-
-/* Контейнер для изображений и текста */
-.block-content {
+.countdown-numbers {
+  font-size: 24px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  align-items: center;
+  gap: 10px;
   justify-content: center;
-  margin-top: 20px;
+}
+.countdown-numbers span {
+  font-weight: bold;
+  font-size: 30px;
+  margin: 0 5px;
 }
 
-.block-image img {
-  max-width: 600px;
-  width: 100%;
-  border-radius: 8px;
+/* Блок 4 */
+.block-4-bg {
+  background: url('images/block4.jpg') center/cover no-repeat;
 }
 
-.block-text {
-  max-width: 500px;
-  margin: 0 auto;
-  text-align: left;
-  font-size: 18px;
-  line-height: 1.6;
-}
-
-/* ---------- Тайминг ---------- */
-.schedule ul {
-  list-style: none;
-  margin-top: 30px;
-}
-
-.schedule li {
-  font-size: 20px;
-  margin: 10px 0;
-  font-weight: 500;
-}
-
-/* ---------- Локация (карта) ---------- */
-.location p {
-  font-size: 18px;
-  margin-bottom: 20px;
-}
-
-.map-button {
-  display: inline-block;
-  padding: 12px 20px;
+/* Блок 5 */
+.block-5 {
   background: #000;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 6px;
-  transition: 0.3s;
+  min-height: 50vh;
 }
 
-.map-button:hover {
-  background: #444;
-}
-
-/* ---------- Дресс-код (с галереей) ---------- */
-.dress-code p {
-  font-size: 18px;
-  line-height: 1.6;
-  margin: 20px auto;
-  max-width: 600px;
-}
-
-.dress-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  margin: 30px 0;
-}
-
-.dress-item {
-  width: 200px;
-  text-align: center;
-}
-
-.dress-item img {
+/* Блок 6, 7, 11 - Видео на фоне */
+.block-6 .video-bg,
+.block-7 .video-bg,
+.block-11 .video-bg {
+  position: absolute;
   width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+.block-6 iframe,
+.block-7 iframe,
+.block-11 iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* Блок 8 (Дресс-код) */
+.block-8-bg {
+  background: url('images/block8.jpg') center/cover no-repeat;
+}
+
+/* Горизонтальная галерея (Блок 9 и 10) */
+.scrollable-gallery {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 10px;
+}
+.scrollable-gallery img {
+  width: 300px;
   height: auto;
   border-radius: 8px;
+  scroll-snap-align: start;
+  object-fit: cover;
 }
 
-.dress-item p {
-  margin-top: 10px;
-  font-size: 16px;
-}
-
-/* ---------- Контакты ---------- */
-.contact p {
-  font-size: 18px;
-  max-width: 600px;
-  margin: 10px auto;
-  line-height: 1.6;
-}
-
-/* ---------- Кнопка "Наверх" ---------- */
-.back-to-top {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  text-decoration: none;
-  background: #000;
-  color: #fff;
-  padding: 14px 18px;
-  border-radius: 50%;
-  font-size: 20px;
-  transition: opacity 0.3s;
-  opacity: 0.7;
-}
-
-.back-to-top:hover {
-  opacity: 1;
-}
-
-/* ---------- Доп. анимация (fade-in), если нужно ---------- */
-.fade-in {
-  opacity: 0;
-  animation: fadeInUp 1s forwards;
-  animation-delay: 0.3s;
-}
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Блок 13 */
+.block-13-bg {
+  background: url('images/block13.jpg') center/cover no-repeat;
 }
