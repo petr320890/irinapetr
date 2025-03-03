@@ -20,6 +20,19 @@
     </div>
   </header>
 
+  <!-- Блок обратного отсчёта -->
+  <section id="countdown" class="block-section">
+    <div id="countdown-timer" style="text-align: center; font-family: 'Montserrat', sans-serif; margin: 30px 0;">
+      <h2>До свадьбы осталось:</h2>
+      <div style="font-size: 24px;">
+        <span id="days">00</span> дней 
+        <span id="hours">00</span> часов 
+        <span id="minutes">00</span> минут 
+        <span id="seconds">00</span> секунд
+      </div>
+    </div>
+  </section>
+
   <!-- Блок 2: Описание мероприятия (с отсылками к кино) -->
   <section id="details" class="block-section">
     <h2>О Съёмках</h2>
@@ -103,7 +116,7 @@
   <!-- Ссылка "Наверх" (при желании) -->
   <a href="#" class="back-to-top">Наверх ↑</a>
 
-  <!-- Плавная прокрутка -->
+  <!-- Скрипт для плавной прокрутки -->
   <script>
     document.querySelectorAll('a[href^="#"]').forEach(link => {
       link.addEventListener('click', function(e) {
@@ -114,6 +127,36 @@
         }
       });
     });
+  </script>
+
+  <!-- Скрипт для обратного отсчёта -->
+  <script>
+    // Задаём дату события: 18 сентября 2025 года, 15:00:00
+    var countDownDate = new Date("September 18, 2025 15:00:00").getTime();
+
+    // Обновляем обратный отсчёт каждую секунду
+    var countdownfunction = setInterval(function() {
+      var now = new Date().getTime();
+      var distance = countDownDate - now;
+
+      // Расчёт оставшихся дней, часов, минут и секунд
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Выводим результат в соответствующие элементы
+      document.getElementById("days").innerHTML = days;
+      document.getElementById("hours").innerHTML = hours;
+      document.getElementById("minutes").innerHTML = minutes;
+      document.getElementById("seconds").innerHTML = seconds;
+
+      // Если отсчёт завершён, выводим сообщение
+      if (distance < 0) {
+        clearInterval(countdownfunction);
+        document.getElementById("countdown-timer").innerHTML = "Событие началось!";
+      }
+    }, 1000);
   </script>
 
 </body>
