@@ -177,8 +177,9 @@ p {
   gap: 20px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  /* Убираем отступ, чтобы первое фото начиналось с начала */
+  /* Убираем отступы, чтобы первое фото начиналось сразу */
   padding-left: 0;
+  scroll-padding-left: 0;
   -webkit-overflow-scrolling: touch;
   padding-bottom: 10px;
 }
