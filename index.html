@@ -47,7 +47,7 @@
     <div class="content">
       <h2>До нашей свадьбы осталось:</h2>
       <div id="countdown-timer">
-        <h3>Обратный отсчёт</h3>
+        <!-- <h3>Обратный отсчёт</h3> — Удалено по требованию -->
         <div class="countdown-numbers">
           <span id="days">00</span>д  
           <span id="hours">00</span>ч  
@@ -65,6 +65,10 @@
     <div class="content">
       <h2>ЛОКАЦИЯ</h2>
       <p>DUE TO LOVE</p>
+      <!-- Кнопка "Как добраться" -->
+      <p>
+        <a href="https://yandex.ru/maps" target="_blank" class="map-button">Как добраться</a>
+      </p>
     </div>
     <div class="scroll-arrow" onclick="scrollToNextBlock(this)">V</div>
   </section>
@@ -90,13 +94,14 @@
     <div class="scroll-arrow" onclick="scrollToNextBlock(this)">V</div>
   </section>
 
-  <!-- БЛОК 7 (GIF на фоне, отказ от приглашения детей) -->
+  <!-- БЛОК 7 -->
   <section class="block block-7">
     <div class="gif-bg">
       <img src="images/video-replacement.gif" alt="">
     </div>
     <div class="content">
-      <h2>Важная информация</h2>
+      <!-- Удаляем заголовок "Важная информация" -->
+      <!-- <h2>Важная информация</h2> -->
       <p>
         К сожалению, из-за ограничений места проведения, мы не сможем пригласить детей на свадьбу и позаботиться об их досуге.<br>
         Поэтому просим Вас оставить детишек дома. Надеемся на понимание.
@@ -143,21 +148,24 @@
     <div class="scroll-arrow" onclick="scrollToNextBlock(this)">V</div>
   </section>
 
-  <!-- БЛОК 11 (GIF на фоне, свадебный организатор) -->
+  <!-- БЛОК 11 -->
   <section class="block block-11">
     <div class="gif-bg">
       <img src="images/video-replacement.gif" alt="">
     </div>
     <div class="content">
-      <h2>Свадебный организатор</h2>
+      <!-- Удаляем <h2>Свадебный организатор</h2> -->
+
       <p>
         В день свадьбы мы будем немного заняты, поэтому, в случае возникновения вопросов,<br>
         вы всегда сможете обратиться за помощью к нашему свадебному организатору:
       </p>
       <p>
-        <strong>Дарья</strong><br>
-        <a href="tel:+79991234567" style="color: #fff; text-decoration: underline;">+7 999 123-45-67</a><br>
-        <a href="https://wa.me/79991234567" target="_blank" style="color: #fff; text-decoration: underline;">Написать в WhatsApp</a>
+        <strong>Дарья</strong><br><br>
+        <!-- Три иконки: телефон, Telegram, WhatsApp -->
+        <a href="tel:+79991234567" style="color: #fff; margin-right:10px;">📞</a>
+        <a href="tg://resolve?domain=YourTelegram" style="color: #fff; margin-right:10px;">Telegram</a>
+        <a href="https://wa.me/79991234567" target="_blank" style="color: #fff;">WhatsApp</a>
       </p>
     </div>
     <div class="scroll-arrow" onclick="scrollToNextBlock(this)">V</div>
