@@ -9,6 +9,10 @@ html, body {
   color: #fff;
   background: #000;
   overflow-x: hidden; /* Предотвращаем горизонтальный скролл */
+
+  /* Добавляем плавную прокрутку и фиксацию по экранам */
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
 }
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: 10px;
@@ -33,13 +37,17 @@ p {
 .block {
   position: relative;
   width: 100%;
-  min-height: 80vh;
+  /* min-height: 80vh; */  /* убираем */
+  min-height: 100vh;       /* блок теперь на всю высоту экрана */
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 40px 20px;
+
+  /* Чтобы блоки защёлкивались друг за другом */
+  scroll-snap-align: start;
 }
 
 /* Overlay с непрозрачностью 70% (по умолчанию) */
@@ -84,7 +92,8 @@ p {
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 48px;
+  /* уменьшаем размер, чтобы была тоньше визуально */
+  font-size: 30px;
   font-family: Arial, sans-serif;
   font-weight: 100;
   color: #fff;
@@ -122,11 +131,7 @@ p {
   font-size: 20px;
 }
 
-/* Блок 3: Обратный отсчёт */
-.block-3 #countdown-timer h3 {
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-}
+/* Блок 3: Обратный отсчёт (убрана надпись h3) */
 
 /* Фоны блоков */
 .block-1-bg {
@@ -151,7 +156,7 @@ p {
 /* Блок 5 */
 .block-5 {
   background: #000;
-  min-height: 50vh;
+  /* min-height: 50vh; можно оставить или убрать, если уже есть 100vh выше */
 }
 
 /* ЗАМЕНА VIDEO НА GIF (Блоки 6, 7, 11) */
@@ -185,7 +190,8 @@ p {
 .scrollable-gallery img {
   width: 300px;
   height: auto;
-  border-radius: 8px;
+  /* Закругления на 20% */
+  border-radius: 20%;
   scroll-snap-align: start;
   object-fit: cover;
   cursor: zoom-in;
@@ -271,3 +277,17 @@ button[type="submit"]:hover {
 }
 .prev { left: 0; }
 .next { right: 0; }
+
+/* Стиль для кнопки "Как добраться" */
+.map-button {
+  display: inline-block;
+  background: #ffcc00;
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+.map-button:hover {
+  background: #e6b800;
+}
