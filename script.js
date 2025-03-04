@@ -52,6 +52,7 @@ function scrollToNextBlock(el) {
 document.querySelectorAll(".block-9 .scrollable-gallery img, .block-10 .scrollable-gallery img")
 .forEach(function(img) {
   img.addEventListener("click", function() {
+    // Убедитесь, что эти селекторы совпадают с блоками 9 и 10
     document.getElementById("modal-img").src = this.src;
     document.getElementById("image-modal").style.display = "block";
   });
