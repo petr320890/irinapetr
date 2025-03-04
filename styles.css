@@ -77,13 +77,15 @@ p {
   }
 }
 
-/* Анимированная стрелка вниз */
+/* Анимированная стрелка вниз в виде тонкой буквы V */
 .scroll-arrow {
   position: absolute;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   font-size: 48px;
+  font-family: Arial, sans-serif;
+  font-weight: 100;
   color: #fff;
   cursor: pointer;
   animation: bounce 2s infinite;
@@ -96,7 +98,6 @@ p {
 }
 
 /* Шрифты для блоков */
-
 /* Блок 1: Заголовок и подпись */
 .block-1 .content h1 {
   font-family: Georgia, serif;
@@ -126,41 +127,24 @@ p {
   font-size: 14px;
 }
 
-/* Блок 1 */
+/* Фоны блоков */
 .block-1-bg {
   background: url('images/block1.jpg') center/cover no-repeat;
 }
-
-/* Блок 2 */
 .block-2-bg {
   background: url('images/block2.jpg') center/cover no-repeat;
 }
-
-/* Блок 3 (Обратный отсчёт) */
 .block-3-bg {
   background: url('images/block3.jpg') center/cover no-repeat;
 }
-#countdown-timer {
-  background: rgba(0, 0, 0, 0.5);
-  padding: 20px;
-  border-radius: 10px;
-  display: inline-block;
-}
-.countdown-numbers {
-  font-size: 24px;
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-}
-.countdown-numbers span {
-  font-weight: bold;
-  font-size: 30px;
-  margin: 0 5px;
-}
-
-/* Блок 4 */
 .block-4-bg {
   background: url('images/block4.jpg') center/cover no-repeat;
+}
+.block-8-bg {
+  background: url('images/block8.jpg') center/cover no-repeat;
+}
+.block-13-bg {
+  background: url('images/block13.jpg') center/cover no-repeat;
 }
 
 /* Блок 5 */
@@ -189,11 +173,6 @@ p {
   pointer-events: none;
 }
 
-/* Блок 8 (Дресс-код) */
-.block-8-bg {
-  background: url('images/block8.jpg') center/cover no-repeat;
-}
-
 /* Горизонтальная галерея (Блоки 9 и 10) */
 .scrollable-gallery {
   display: flex;
@@ -211,7 +190,46 @@ p {
   cursor: pointer;
 }
 
-/* Блок 13 */
-.block-13-bg {
-  background: url('images/block13.jpg') center/cover no-repeat;
+/* Вертикальная прокрутка для мобильной версии */
+@media (max-width: 768px) {
+  .scrollable-gallery {
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+
+/* Стили для формы в блоке 12 */
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+.form-group input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+}
+.form-group input[type="radio"],
+.form-group input[type="checkbox"] {
+  margin-right: 5px;
+}
+button[type="submit"] {
+  background: #ffcc00;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+button[type="submit"]:hover {
+  background: #e6b800;
 }
