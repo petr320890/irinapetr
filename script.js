@@ -47,14 +47,12 @@ function scrollToNextBlock(el) {
   }
 }
 
-// Модальное окно для увеличения изображений с возможностью пролистывания
+// Модальное окно для увеличения изображений с пролистыванием
 var modalImages = [];
 var modalCurrentIndex = 0;
-
 document.querySelectorAll(".block-9 .scrollable-gallery img, .block-10 .scrollable-gallery img")
-.forEach(function(img, index) {
+.forEach(function(img) {
   img.addEventListener("click", function() {
-    // Находим родительский блок (9 или 10)
     var gallery = this.closest(".scrollable-gallery");
     modalImages = Array.from(gallery.querySelectorAll("img")).map(function(image) {
       return image.src;
@@ -63,12 +61,10 @@ document.querySelectorAll(".block-9 .scrollable-gallery img, .block-10 .scrollab
     openModal(modalCurrentIndex);
   });
 });
-
 function openModal(index) {
   document.getElementById("modal-img").src = modalImages[index];
   document.getElementById("image-modal").style.display = "block";
 }
-
 function changeModalImage(direction) {
   modalCurrentIndex += direction;
   if (modalCurrentIndex < 0) {
@@ -79,7 +75,6 @@ function changeModalImage(direction) {
   }
   document.getElementById("modal-img").src = modalImages[modalCurrentIndex];
 }
-
 document.querySelector("#image-modal .close").addEventListener("click", function() {
   document.getElementById("image-modal").style.display = "none";
 });
