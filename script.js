@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
   var blocks = document.querySelectorAll(".block");
   var observer = new IntersectionObserver(function(entries, observer) {
     entries.forEach(function(entry) {
-      if(entry.isIntersecting) {
+      if (entry.isIntersecting) {
          entry.target.classList.add("visible");
          observer.unobserve(entry.target);
       }
@@ -47,7 +47,7 @@ function scrollToNextBlock(el) {
   }
 }
 
-// Модальное окно для увеличения изображений с пролистыванием
+// Модальное окно для увеличения изображений с пролистыванием (Блоки 9 и 10)
 var modalImages = [];
 var modalCurrentIndex = 0;
 document.querySelectorAll(".block-9 .scrollable-gallery img, .block-10 .scrollable-gallery img")
