@@ -1,235 +1,75 @@
-/* Сброс и глобальные стили */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  font-family: Arial, sans-serif;
-  color: #fff;
-  background: #000;
-}
-h1, h2, h3, h4, h5, h6 {
-  margin-bottom: 10px;
-}
-p {
-  margin-bottom: 15px;
-  line-height: 1.5;
-}
+// Обратный отсчёт (Блок 3)
+var countDownDate = new Date("September 18, 2025 15:00:00").getTime();
+var countdownfunction = setInterval(function() {
+  var now = new Date().getTime();
+  var distance = countDownDate - now;
 
-/* Эффект появления при скролле */
-.block {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-.block.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-/* Базовый стиль для блоков */
-.block {
-  position: relative;
-  width: 100%;
-  min-height: 80vh;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 40px 20px;
-}
+  document.getElementById("days").innerHTML = days;
+  document.getElementById("hours").innerHTML = hours;
+  document.getElementById("minutes").innerHTML = minutes;
+  document.getElementById("seconds").innerHTML = seconds;
 
-/* Overlay с непрозрачностью 70% (по умолчанию) */
-.overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.7);
-  z-index: 1;
-}
-/* Для блока 1 прозрачность overlay 40% */
-.block-1 .overlay {
-  background: rgba(0, 0, 0, 0.4);
-}
+  if (distance < 0) {
+    clearInterval(countdownfunction);
+    document.getElementById("countdown-timer").innerHTML = "<h3>Событие началось!</h3>";
+  }
+}, 1000);
 
-.content {
-  position: relative;
-  z-index: 2;
-  max-width: 800px;
-  margin: 0 auto;
-}
+// Эффект появления при скролле с фиксацией
+document.addEventListener("DOMContentLoaded", function() {
+  var blocks = document.querySelectorAll(".block");
+  var observer = new IntersectionObserver(function(entries, observer) {
+    entries.forEach(function(entry) {
+      if(entry.isIntersecting) {
+         entry.target.classList.add("visible");
+         observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  blocks.forEach(function(block) {
+    observer.observe(block);
+  });
+});
 
-/* Анимация надписей (fade-in с увеличением) */
-.animate-text {
-  opacity: 0;
-  transform: scale(0.8);
-  animation: textFadeIn 1s forwards;
-  animation-delay: 0.5s;
-}
-@keyframes textFadeIn {
-  to {
-    opacity: 1;
-    transform: scale(1);
+// Функция прокрутки к следующему блоку при клике на стрелку
+function scrollToNextBlock(el) {
+  var currentBlock = el.closest(".block");
+  if (currentBlock) {
+    var nextBlock = currentBlock.nextElementSibling;
+    // Если следующий блок существует и имеет класс .block
+    if (nextBlock && nextBlock.classList.contains("block")) {
+      nextBlock.scrollIntoView({ behavior: "smooth" });
+    }
   }
 }
 
-/* Анимированная стрелка вниз в виде тонкой буквы V */
-.scroll-arrow {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 48px;
-  font-family: Arial, sans-serif;
-  font-weight: 100;
-  color: #fff;
-  cursor: pointer;
-  animation: bounce 2s infinite;
-  z-index: 2;
-}
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
-  40% { transform: translate(-50%, 10px); }
-  60% { transform: translate(-50%, 5px); }
-}
-
-/* Шрифты для блоков */
-/* Блок 1: Заголовок и подпись */
-.block-1 .content h1 {
-  font-family: Georgia, serif;
-  font-size: 72px;
-  font-style: italic;
-}
-.block-1 .content p {
-  font-family: Arial, sans-serif;
-  font-size: 24px;
-  font-weight: bold;
-}
-
-/* Блок 2: Дата и описание */
-.block-2 .content h2 {
-  font-family: Arial, sans-serif;
-  font-size: 24px;
-  font-weight: bold;
-}
-.block-2 .content p {
-  font-family: Arial, sans-serif;
-  font-size: 20px;
-}
-
-/* Блок 3: Обратный отсчёт */
-.block-3 #countdown-timer h3 {
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-}
-
-/* Фоны блоков */
-.block-1-bg {
-  background: url('images/block1.jpg') center/cover no-repeat;
-}
-.block-2-bg {
-  background: url('images/block2.jpg') center/cover no-repeat;
-}
-.block-3-bg {
-  background: url('images/block3.jpg') center/cover no-repeat;
-}
-.block-4-bg {
-  background: url('images/block4.jpg') center/cover no-repeat;
-}
-.block-8-bg {
-  background: url('images/block8.jpg') center/cover no-repeat;
-}
-.block-13-bg {
-  background: url('images/block13.jpg') center/cover no-repeat;
-}
-
-/* Блок 5 */
-.block-5 {
-  background: #000;
-  min-height: 50vh;
-}
-
-/* Блоки 6, 7, 11 - Видео на фоне */
-.block-6 .video-bg,
-.block-7 .video-bg,
-.block-11 .video-bg {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 0;
-}
-.block-6 iframe,
-.block-7 iframe,
-.block-11 iframe {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
-}
-
-/* Горизонтальная галерея (Блоки 9 и 10) */
-.scrollable-gallery {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 10px;
-}
-.scrollable-gallery img {
-  width: 300px;
-  height: auto;
-  border-radius: 8px;
-  scroll-snap-align: start;
-  object-fit: cover;
-  cursor: pointer;
-}
-
-/* Вертикальная прокрутка для мобильной версии */
-@media (max-width: 768px) {
-  .scrollable-gallery {
-    flex-direction: column;
-    overflow-y: auto;
-    overflow-x: hidden;
+// Модальное окно для увеличения изображений (Блоки 9 и 10)
+document.querySelectorAll(".block-9 .scrollable-gallery img, .block-10 .scrollable-gallery img")
+.forEach(function(img) {
+  img.addEventListener("click", function() {
+    document.getElementById("modal-img").src = this.src;
+    document.getElementById("image-modal").style.display = "block";
+  });
+});
+document.querySelector("#image-modal .close").addEventListener("click", function() {
+  document.getElementById("image-modal").style.display = "none";
+});
+document.getElementById("image-modal").addEventListener("click", function(e) {
+  if (e.target === this) {
+    this.style.display = "none";
   }
-}
+});
 
-/* Стили для формы в блоке 12 */
-.form-group {
-  margin-bottom: 15px;
-  text-align: left;
-}
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-  font-size: 16px;
-}
-.form-group input[type="text"] {
-  width: 100%;
-  padding: 8px;
-  font-size: 16px;
-  border: none;
-  border-radius: 4px;
-}
-.form-group input[type="radio"],
-.form-group input[type="checkbox"] {
-  margin-right: 5px;
-}
-button[type="submit"] {
-  background: #ffcc00;
-  color: #000;
-  border: none;
-  padding: 10px 20px;
-  font-size: 18px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-button[type="submit"]:hover {
-  background: #e6b800;
-}
+// Обработка формы в Блоке 12
+document.getElementById("rsvpForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  // Здесь можно собрать данные формы и отправить их на сервер через AJAX,
+  // или использовать mailto: в атрибуте action формы.
+  alert("Спасибо за подтверждение присутствия!");
+  this.reset();
+});
