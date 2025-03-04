@@ -1,37 +1,37 @@
-/* Сброс и базовые стили */
+/* Сброс и глобальные стили */
 * {
-  margin: 0; 
-  padding: 0; 
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 html, body {
   font-family: Arial, sans-serif;
   color: #fff;
-  background: #000; /* общий фон */
-  overflow-x: hidden;
-  scroll-behavior: smooth; /* плавная прокрутка */
+  background: #000;
+  overflow-x: hidden; /* Предотвращаем горизонтальный скролл */
+  scroll-behavior: smooth;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 10px;
+}
+p {
+  margin-bottom: 15px;
+  line-height: 1.5;
 }
 
-/* 
-  1) Один большой контейнер высотой ~ (число блоков) * 100vh,
-     чтобы был простор для скролла.
-  2) Каждый блок (section) внутри — position: sticky; top: 0; height: 100vh.
-*/
+/* Общий контейнер для блоков (опционально) */
 .blocks-container {
   position: relative;
-  /* У нас 12 блоков, значит примерная высота — 12 * 100vh = 1300vh.
-     Можно подправить, если блоков больше/меньше. */
-  height: 1200vh;
+  /* Высота не обязательна, если блоки используют position: sticky */
 }
 
-/* Каждый блок — высота 100vh, "залипает" (sticky) при скролле */
+/* Каждый блок занимает 100vh и залипает (sticky) */
 .block {
   position: sticky;
   top: 0;
   width: 100%;
   height: 100vh;
-
-  /* Если нужно, можете добавить собственный padding/margin внутри */
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,25 +39,21 @@ html, body {
   padding: 40px 20px;
 }
 
-/* Поверх предыдущего блока идёт следующий,
-   поэтому в HTML z-index возрастает от 1 до 13.
-   Чем больше z-index, тем "выше" блок при скролле. */
-
-/* Overlay (тёмная пелена) */
+/* Overlay с непрозрачностью 70% (по умолчанию) */
 .overlay {
   position: absolute;
   width: 100%;
   height: 100%;
-  top: 0; 
+  top: 0;
   left: 0;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0, 0, 0, 0.7);
   z-index: 1;
 }
 .block-1 .overlay {
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4); /* для блока 1 - 40% */
 }
 
-/* Контент внутри блока */
+/* Контент */
 .content {
   position: relative;
   z-index: 2;
@@ -79,13 +75,14 @@ html, body {
   }
 }
 
-/* Стрелка */
+/* Стрелка вниз в виде тонкой буквы V */
 .scroll-arrow {
   position: absolute;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 30px; 
+  font-size: 30px;
+  font-family: Arial, sans-serif;
   font-weight: 100;
   color: #fff;
   cursor: pointer;
@@ -98,7 +95,37 @@ html, body {
   60% { transform: translate(-50%, 5px); }
 }
 
-/* Фоновые картинки для некоторых блоков */
+/* Шрифты для блоков */
+/* Блок 1 */
+.block-1 .content h1 {
+  font-family: Georgia, serif;
+  font-size: 72px;
+  font-style: italic;
+}
+.block-1 .content p {
+  font-family: Arial, sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Блок 2 */
+.block-2 .content h2 {
+  font-family: Arial, sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+}
+.block-2 .content p {
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+}
+
+/* Блок 3 */
+.block-3 #countdown-timer h3 {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+/* Фоны блоков */
 .block-1-bg {
   background: url('images/block1.jpg') center/cover no-repeat;
 }
@@ -118,12 +145,18 @@ html, body {
   background: url('images/block13.jpg') center/cover no-repeat;
 }
 
-/* GIF на фоне (например, блоки 6,7,11) */
+/* Блок 5 (чёрный фон) */
+.block-5 {
+  background: #000;
+  min-height: 50vh;
+}
+
+/* Замена видео на GIF (блоки 6,7,11) */
 .gif-bg {
   position: absolute;
-  top: 0; 
+  top: 0;
   left: 0;
-  width: 100%; 
+  width: 100%;
   height: 100%;
   z-index: 0;
   overflow: hidden;
@@ -140,23 +173,25 @@ html, body {
   display: flex;
   gap: 20px;
   overflow-x: auto;
-  scroll-snap-type: x mandatory; /* для "пролистывания" */
+  scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   padding-bottom: 10px;
 }
 .scrollable-gallery img {
   width: 300px;
   height: auto;
-  border-radius: 20%; /* 0.2 */
+  border-radius: 8px;
+  scroll-snap-align: start;
   object-fit: cover;
   cursor: zoom-in;
-  scroll-snap-align: start;
 }
 
-/* Форма (блок 12) */
+/* Блок 12: Отступ для формы, чтобы стрелка не перекрывала кнопку */
 .block-12 .form-block {
   padding-bottom: 80px;
 }
+
+/* Стили формы (блок 12) */
 .form-group {
   margin-bottom: 15px;
   text-align: left;
@@ -195,10 +230,10 @@ button[type="submit"]:hover {
 .modal {
   display: none !important;
   position: fixed;
-  z-index: 9999;
-  top: 0; 
+  z-index: 1000;
+  top: 0;
   left: 0;
-  width: 100%; 
+  width: 100%;
   height: 100%;
   overflow: auto;
   background-color: rgba(0,0,0,0.9);
