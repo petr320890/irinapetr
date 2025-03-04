@@ -153,20 +153,17 @@ p {
   min-height: 50vh;
 }
 
-/* Блоки 6, 7, 11 - Видео на фоне */
-.block-6 .video-bg,
-.block-7 .video-bg,
-.block-11 .video-bg {
+/* ЗАМЕНА VIDEO НА GIF (6, 7, 11) */
+.gif-bg {
   position: absolute;
-  width: 100%;
-  height: 100%;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 0;
+  overflow: hidden;
 }
-.block-6 iframe,
-.block-7 iframe,
-.block-11 iframe {
+.gif-bg img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -174,6 +171,7 @@ p {
 }
 
 /* Горизонтальная галерея (Блоки 9 и 10) */
+/* Убрали медиа-запрос для вертикальной прокрутки — теперь всегда горизонтальная */
 .scrollable-gallery {
   display: flex;
   gap: 20px;
@@ -190,13 +188,9 @@ p {
   cursor: pointer;
 }
 
-/* Вертикальная прокрутка для мобильной версии */
-@media (max-width: 768px) {
-  .scrollable-gallery {
-    flex-direction: column;
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
+/* БЛОК 12: Дополнительный отступ, чтобы стрелка не наезжала на кнопку */
+.block-12 .form-block {
+  padding-bottom: 80px; /* пространство под стрелку */
 }
 
 /* Стили для формы в блоке 12 */
