@@ -4,10 +4,11 @@
   padding: 0;
   box-sizing: border-box;
 }
-body {
+html, body {
   font-family: Arial, sans-serif;
   color: #fff;
   background: #000;
+  overflow-x: hidden; /* Предотвращаем горизонтальный скролл */
 }
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: 10px;
@@ -153,7 +154,7 @@ p {
   min-height: 50vh;
 }
 
-/* ЗАМЕНА VIDEO НА GIF (6, 7, 11) */
+/* ЗАМЕНА VIDEO НА GIF (Блоки 6, 7, 11) */
 .gif-bg {
   position: absolute;
   top: 0;
@@ -171,7 +172,6 @@ p {
 }
 
 /* Горизонтальная галерея (Блоки 9 и 10) */
-/* Убрали медиа-запрос для вертикальной прокрутки — теперь всегда горизонтальная */
 .scrollable-gallery {
   display: flex;
   gap: 20px;
@@ -188,7 +188,7 @@ p {
   cursor: pointer;
 }
 
-/* БЛОК 12: Дополнительный отступ, чтобы стрелка не наезжала на кнопку */
+/* Блок 12: Дополнительный отступ для формы */
 .block-12 .form-block {
   padding-bottom: 80px; /* пространство под стрелку */
 }
