@@ -20,54 +20,51 @@ var countdownfunction = setInterval(function() {
   }
 }, 1000);
 
-// Эффект появления при скролле с фиксацией
+
+// Простая анимация появления (если нужно)
+// Здесь просто при загрузке добавим класс .visible всем блокам
 document.addEventListener("DOMContentLoaded", function() {
   var blocks = document.querySelectorAll(".block");
-  var observer = new IntersectionObserver(function(entries, observer) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-         entry.target.classList.add("visible");
-         observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.2 });
   blocks.forEach(function(block) {
-    observer.observe(block);
+    block.classList.add("visible");
   });
 });
 
-// Функция прокрутки к следующему блоку при клике на стрелку
+// Функция прокрутки к следующему блоку
+// Теперь она просто скроллит вниз на высоту окна (window.innerHeight)
 function scrollToNextBlock(el) {
-  var currentBlock = el.closest(".block");
-  if (currentBlock) {
-    var nextBlock = currentBlock.nextElementSibling;
-    if (nextBlock && nextBlock.classList.contains("block")) {
-      nextBlock.scrollIntoView({ behavior: "smooth" });
-    }
-  }
+  window.scrollBy({
+    top: window.innerHeight,
+    behavior: "smooth"
+  });
 }
 
-// Модальное окно для увеличения изображений с пролистыванием (Блоки 9 и 10)
+// Модальное окно для увеличения изображений (Блоки 9 и 10)
 var modalImages = [];
 var modalCurrentIndex = 0;
+
 document.querySelectorAll(".block-9 .scrollable-gallery img, .block-10 .scrollable-gallery img")
-.forEach(function(img) {
-  img.addEventListener("click", function() {
-    var gallery = this.closest(".scrollable-gallery");
-    modalImages = Array.from(gallery.querySelectorAll("img")).map(function(image) {
-      return image.src;
+  .forEach(function(img) {
+    img.addEventListener("click", function() {
+      var gallery = this.closest(".scrollable-gallery");
+      modalImages = Array.from(gallery.querySelectorAll("img")).map(function(image) {
+        return image.src;
+      });
+      modalCurrentIndex = modalImages.indexOf(this.src);
+      openModal(modalCurrentIndex);
     });
-    modalCurrentIndex = modalImages.indexOf(this.src);
-    openModal(modalCurrentIndex);
   });
-});
+
 function openModal(index) {
-  document.getElementById("modal-img").src = modalImages[index];
   var modal = document.getElementById("image-modal");
+  var modalImg = document.getElementById("modal-img");
+  modalImg.src = modalImages[index];
   modal.style.display = "block";
-  // Блокируем прокрутку страницы
+
+  // Блокируем прокрутку страницы, чтобы не было скролла фона
   document.body.style.overflow = "hidden";
 }
+
 function changeModalImage(direction) {
   modalCurrentIndex += direction;
   if (modalCurrentIndex < 0) {
@@ -78,6 +75,8 @@ function changeModalImage(direction) {
   }
   document.getElementById("modal-img").src = modalImages[modalCurrentIndex];
 }
+
+// Закрытие модалки
 document.querySelector("#image-modal .close").addEventListener("click", function() {
   document.getElementById("image-modal").style.display = "none";
   document.body.style.overflow = "auto";
@@ -90,8 +89,11 @@ document.getElementById("image-modal").addEventListener("click", function(e) {
 });
 
 // Обработка формы в Блоке 12
-document.getElementById("rsvpForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-  alert("Спасибо за подтверждение присутствия!");
-  this.reset();
-});
+var form = document.getElementById("rsvpForm");
+if (form) {
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    alert("Спасибо за подтверждение присутствия!");
+    form.reset();
+  });
+}
