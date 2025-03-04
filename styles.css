@@ -185,12 +185,12 @@ p {
   border-radius: 8px;
   scroll-snap-align: start;
   object-fit: cover;
-  cursor: pointer;
+  cursor: zoom-in; /* курсор лупа при наведении */
 }
 
 /* Блок 12: Дополнительный отступ для формы */
 .block-12 .form-block {
-  padding-bottom: 80px; /* пространство под стрелку */
+  padding-bottom: 80px;
 }
 
 /* Стили для формы в блоке 12 */
