@@ -190,7 +190,7 @@ p {
   cursor: zoom-in;
 }
 
-/* Блок 12: Дополнительный отступ для формы */
+/* Блок 12: Дополнительный отступ для формы, чтобы стрелка не наезжала на кнопку */
 .block-12 .form-block {
   padding-bottom: 80px;
 }
@@ -229,6 +229,7 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background: #e6b800;
 }
+
 /* Стили для модального окна */
 .modal {
   display: none;
