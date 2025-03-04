@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ирина & Пётр — Свадьба</title>
+  <title>Ирина &amp; Пётр — Свадьба</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- Модальное окно для увеличения изображений (используется в блоках 9 и 10) -->
+  <!-- Модальное окно для увеличения изображений (Блоки 9 и 10) -->
   <div id="image-modal" class="modal">
     <span class="close">&times;</span>
-    <img class="modal-content" id="modal-img">
+    <img class="modal-content" id="modal-img" alt="Увеличенное изображение">
   </div>
 
   <!-- БЛОК 1 -->
@@ -21,7 +21,7 @@
       <h1 class="animate-text">Ирина &amp; Пётр</h1>
       <p class="animate-text">Приглашают вас на свадьбу 🤍</p>
     </div>
-    <div class="scroll-arrow">&#9660;</div>
+    <div class="scroll-arrow" onclick="scrollToNextBlock(this)">V</div>
   </section>
 
   <!-- БЛОК 2 -->
@@ -34,6 +34,7 @@
         Мы приглашаем Вас на торжество, посвящённое нашей свадьбе!
       </p>
     </div>
+    <div class="scroll-arrow" onclick="scrollToNextBlock(this)">V</div>
   </section>
 
   <!-- БЛОК 3 (Обратный отсчёт) -->
@@ -51,9 +52,9 @@
         </div>
       </div>
     </div>
+    <div class="scroll-arrow" onclick="scrollToNextBlock(this)">V</div>
   </section>
 
-  <!-- Остальные блоки остаются без изменений -->
   <!-- БЛОК 4 -->
   <section class="block block-4 block-4-bg">
     <div class="overlay"></div>
@@ -61,6 +62,7 @@
       <h2>ЛОКАЦИЯ</h2>
       <p>DUE TO LOVE</p>
     </div>
+    <div class="scroll-arrow" onclick="scrollToNextBlock(this)">V</div>
   </section>
 
   <!-- БЛОК 5 (Чёрный фон) -->
@@ -69,6 +71,7 @@
       <h2>Как добраться</h2>
       <p>Укажите способы доехать/дойти до места проведения свадьбы (маршрут, транспорт, ориентиры).</p>
     </div>
+    <div class="scroll-arrow" onclick="scrollToNextBlock(this)">V</div>
   </section>
 
   <!-- БЛОК 6 (Видео на фоне) -->
@@ -80,6 +83,7 @@
       <h2>TIME LAIN</h2>
       <p>Здесь можно описать этапы свадебного дня: церемония, банкет, фотосессии и т.д.</p>
     </div>
+    <div class="scroll-arrow" onclick="scrollToNextBlock(this)">V</div>
   </section>
 
   <!-- БЛОК 7 (Видео на фоне, отказ от приглашения детей) -->
@@ -94,6 +98,7 @@
         Поэтому просим Вас оставить детишек дома. Надеемся на понимание.
       </p>
     </div>
+    <div class="scroll-arrow" onclick="scrollToNextBlock(this)">V</div>
   </section>
 
   <!-- БЛОК 8 (Дресс-код) -->
@@ -103,6 +108,7 @@
       <h2>ДРЕСС-КОД</h2>
       <p>На нашей свадьбе будет дресс-код. Нам будет приятно, если вы будете с нами в одной цветовой гамме.</p>
     </div>
+    <div class="scroll-arrow" onclick="scrollToNextBlock(this)">V</div>
   </section>
 
   <!-- БЛОК 9 (Галерея для девушек) -->
@@ -116,6 +122,7 @@
         <img src="images/block9-3.jpg" alt="Пример наряда 3">
       </div>
     </div>
+    <div class="scroll-arrow" onclick="scrollToNextBlock(this)">V</div>
   </section>
 
   <!-- БЛОК 10 (Галерея для парней) -->
@@ -129,6 +136,7 @@
         <img src="images/block10-3.jpg" alt="Пример наряда 3">
       </div>
     </div>
+    <div class="scroll-arrow" onclick="scrollToNextBlock(this)">V</div>
   </section>
 
   <!-- БЛОК 11 (Видео на фоне, свадебный организатор) -->
@@ -148,15 +156,40 @@
         <a href="https://wa.me/79991234567" target="_blank" style="color: #fff; text-decoration: underline;">Написать в WhatsApp</a>
       </p>
     </div>
+    <div class="scroll-arrow" onclick="scrollToNextBlock(this)">V</div>
   </section>
 
-  <!-- БЛОК 12 (Чёрный фон, подтверждение присутствия) -->
+  <!-- БЛОК 12 (Форма подтверждения присутствия) -->
   <section class="block block-12">
     <div class="content">
       <h2>Подтверждение присутствия</h2>
       <p>Мы очень стараемся сделать праздник незабываемым и просим подтвердить своё присутствие до 01.05.2025.</p>
-      <p>Здесь можно разместить форму для RSVP.</p>
+      <form id="rsvpForm">
+        <div class="form-group">
+          <label for="fullname">ФИО:</label>
+          <input type="text" id="fullname" name="fullname" required>
+        </div>
+        <div class="form-group">
+          <p>Сможете ли присутствовать на нашем торжестве?</p>
+          <label><input type="radio" name="attendance" value="with_pleasure" required> Я с удовольствием приду</label><br>
+          <label><input type="radio" name="attendance" value="with_partner"> Буду со своей парой</label><br>
+          <label><input type="radio" name="attendance" value="cannot_attend"> К сожалению, не смогу присутствовать</label><br>
+          <label><input type="radio" name="attendance" value="will_inform_later"> Сообщу позже</label>
+        </div>
+        <div class="form-group">
+          <p>Что предпочитаете из напитков? (выберите все подходящие варианты)</p>
+          <label><input type="checkbox" name="drinks" value="red_wine"> Красное вино</label><br>
+          <label><input type="checkbox" name="drinks" value="white_wine"> Белое вино</label><br>
+          <label><input type="checkbox" name="drinks" value="champagne"> Шампанское</label><br>
+          <label><input type="checkbox" name="drinks" value="vodka"> Водка</label><br>
+          <label><input type="checkbox" name="drinks" value="whiskey"> Виски</label><br>
+          <label><input type="checkbox" name="drinks" value="cognac"> Коньяк</label><br>
+          <label><input type="checkbox" name="drinks" value="no_alcohol"> Не пью алкоголь</label>
+        </div>
+        <button type="submit">Отправить</button>
+      </form>
     </div>
+    <div class="scroll-arrow" onclick="scrollToNextBlock(this)">V</div>
   </section>
 
   <!-- БЛОК 13 (Финальный блок) -->
