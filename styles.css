@@ -1,61 +1,64 @@
-/* Сброс и глобальные стили */
+
+/* Сброс и базовые стили */
 * {
-  margin: 0;
-  padding: 0;
+  margin: 0; 
+  padding: 0; 
   box-sizing: border-box;
 }
 html, body {
   font-family: Arial, sans-serif;
   color: #fff;
-  background: #000;
+  background: #000; /* общий фон */
   overflow-x: hidden;
   scroll-behavior: smooth; /* плавная прокрутка */
 }
-h1, h2, h3, h4, h5, h6 {
-  margin-bottom: 10px;
-}
-p {
-  margin-bottom: 15px;
-  line-height: 1.5;
+
+/* 
+  1) Один большой контейнер высотой ~ (число блоков) * 100vh,
+     чтобы был простор для скролла.
+  2) Каждый блок (section) внутри — position: sticky; top: 0; height: 100vh.
+*/
+.blocks-container {
+  position: relative;
+  /* У нас 13 блоков, значит примерная высота — 13 * 100vh = 1300vh.
+     Можно подправить, если блоков больше/меньше. */
+  height: 1300vh;
 }
 
-/* Блоки наезжают за счёт:
-   - position: sticky
-   - top: 0
-   - height: 100vh
-   - margin-bottom: 100vh
-   - Возрастающий z-index в HTML
-*/
+/* Каждый блок — высота 100vh, "залипает" (sticky) при скролле */
 .block {
   position: sticky;
   top: 0;
+  width: 100%;
   height: 100vh;
-  margin-bottom: 100vh;
-  overflow: hidden;
 
+  /* Если нужно, можете добавить собственный padding/margin внутри */
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-
-  padding: 40px 20px; /* внутренние отступы, меняйте по вкусу */
+  padding: 40px 20px;
 }
 
-/* Overlay */
+/* Поверх предыдущего блока идёт следующий,
+   поэтому в HTML z-index возрастает от 1 до 13.
+   Чем больше z-index, тем "выше" блок при скролле. */
+
+/* Overlay (тёмная пелена) */
 .overlay {
   position: absolute;
   width: 100%;
   height: 100%;
-  top: 0; left: 0;
-  background: rgba(0, 0, 0, 0.7);
+  top: 0; 
+  left: 0;
+  background: rgba(0,0,0,0.7);
   z-index: 1;
 }
 .block-1 .overlay {
-  /* Чуть светлее */
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0,0,0,0.4);
 }
 
-/* Контент */
+/* Контент внутри блока */
 .content {
   position: relative;
   z-index: 2;
@@ -63,7 +66,7 @@ p {
   margin: 0 auto;
 }
 
-/* Анимация текста */
+/* Анимация появления текста */
 .animate-text {
   opacity: 0;
   transform: scale(0.8);
@@ -77,33 +80,26 @@ p {
   }
 }
 
-/* Стрелка тоньше */
+/* Стрелка */
 .scroll-arrow {
   position: absolute;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 30px;  /* уменьшили */
-  font-family: Arial, sans-serif;
+  font-size: 30px; 
   font-weight: 100;
   color: #fff;
   cursor: pointer;
   animation: bounce 2s infinite;
-  z-index: 3; /* чуть выше overlay */
+  z-index: 3;
 }
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translate(-50%, 0);
-  }
-  40% {
-    transform: translate(-50%, 10px);
-  }
-  60% {
-    transform: translate(-50%, 5px);
-  }
+  0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
+  40% { transform: translate(-50%, 10px); }
+  60% { transform: translate(-50%, 5px); }
 }
 
-/* Фоновые картинки */
+/* Фоновые картинки для некоторых блоков */
 .block-1-bg {
   background: url('images/block1.jpg') center/cover no-repeat;
 }
@@ -123,11 +119,12 @@ p {
   background: url('images/block13.jpg') center/cover no-repeat;
 }
 
-/* GIF-блоки (6, 7, 11) */
+/* GIF на фоне (например, блоки 6,7,11) */
 .gif-bg {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%;
+  top: 0; 
+  left: 0;
+  width: 100%; 
   height: 100%;
   z-index: 0;
   overflow: hidden;
@@ -144,7 +141,7 @@ p {
   display: flex;
   gap: 20px;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: x mandatory; /* для "пролистывания" */
   -webkit-overflow-scrolling: touch;
   padding-bottom: 10px;
 }
@@ -157,7 +154,7 @@ p {
   scroll-snap-align: start;
 }
 
-/* Форма в блоке 12 */
+/* Форма (блок 12) */
 .block-12 .form-block {
   padding-bottom: 80px;
 }
@@ -199,12 +196,12 @@ button[type="submit"]:hover {
 .modal {
   display: none !important;
   position: fixed;
-  z-index: 9999; /* поверх всего */
-  top: 0;
+  z-index: 9999;
+  top: 0; 
   left: 0;
-  width: 100%;
+  width: 100%; 
   height: 100%;
-  overflow: auto; /* прокрутка, если картинка большая */
+  overflow: auto;
   background-color: rgba(0,0,0,0.9);
 }
 .modal-content {
@@ -236,7 +233,7 @@ button[type="submit"]:hover {
 .prev { left: 0; }
 .next { right: 0; }
 
-/* Кнопка "Как добраться" (блок 4) */
+/* Кнопка "Как добраться" */
 .map-button {
   display: inline-block;
   background: #ffcc00;
