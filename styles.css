@@ -1,248 +1,245 @@
-
-/* Сброс и базовые стили */
+/* СБРОС */
 * {
-  margin: 0; 
-  padding: 0; 
-  box-sizing: border-box;
+  margin:0; 
+  padding:0; 
+  box-sizing:border-box;
 }
 html, body {
   font-family: Arial, sans-serif;
   color: #fff;
-  background: #000; /* общий фон */
-  overflow-x: hidden;
-  scroll-behavior: smooth; /* плавная прокрутка */
+  background: #000;
+  overflow: auto; /* прокрутка */
+  overscroll-behavior: none;
 }
 
-/* 
-  1) Один большой контейнер высотой ~ (число блоков) * 100vh,
-     чтобы был простор для скролла.
-  2) Каждый блок (section) внутри — position: sticky; top: 0; height: 100vh.
-*/
-.blocks-container {
+/* ОБЩАЯ ОБОЛОЧКА, 
+   у нас нет фиксированной большой высоты, 
+   т.к. скролл будем управлять сами */
+.wrapper {
   position: relative;
-  /* У нас 13 блоков, значит примерная высота — 13 * 100vh = 1300vh.
-     Можно подправить, если блоков больше/меньше. */
-  height: 1300vh;
+  width: 100%;
+  height: auto; /* автоматически подстраиваемая высота */
 }
 
-/* Каждый блок — высота 100vh, "залипает" (sticky) при скролле */
-.block {
-  position: sticky;
-  top: 0;
+/* КАЖДЫЙ БЛОК — position: fixed для «занятия» всего экрана */
+.panel {
+  position: fixed;
+  top: 0; left: 0;
   width: 100%;
-  height: 100vh;
-
-  /* Если нужно, можете добавить собственный padding/margin внутри */
-  display: flex;
-  align-items: center;
+  height: 100vh; 
+  /* плавные переходы «вылезания» */
+  transition: transform 0.8s ease;
+  /* фон/картинка можно вешать классами block-1-bg и т.д. */
+  display: flex; 
+  align-items: center; 
   justify-content: center;
   text-align: center;
-  padding: 40px 20px;
+  padding: 40px 20px; 
 }
 
-/* Поверх предыдущего блока идёт следующий,
-   поэтому в HTML z-index возрастает от 1 до 13.
-   Чем больше z-index, тем "выше" блок при скролле. */
+/* Когда блок «уехал» вверх, мы сдвигаем его transform: translateY(-100%).
+   Когда блок «в ожидании» - translateY(100%). 
+   Когда блок «на экране» - translateY(0). 
+   Будем управлять этим классами на JS. */
+.panel.hidden-above {
+  transform: translateY(-100%);
+}
+.panel.hidden-below {
+  transform: translateY(100%);
+}
+.panel.active {
+  transform: translateY(0);
+}
 
-/* Overlay (тёмная пелена) */
+/* У каждого блока свой z-index (возрастает от 1 до 13).
+   Самый верхний будет block-13. */
+
+/* ФОН / OVERLAY */
 .overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0; 
-  left: 0;
+  position:absolute;
+  top:0; left:0;
+  width:100%; 
+  height:100%;
   background: rgba(0,0,0,0.7);
-  z-index: 1;
+  z-index:1;
 }
 .block-1 .overlay {
   background: rgba(0,0,0,0.4);
 }
 
-/* Контент внутри блока */
 .content {
   position: relative;
-  z-index: 2;
+  z-index:2;
   max-width: 800px;
-  margin: 0 auto;
+  margin:0 auto;
 }
 
-/* Анимация появления текста */
 .animate-text {
-  opacity: 0;
+  opacity:0; 
   transform: scale(0.8);
   animation: textFadeIn 1s forwards;
   animation-delay: 0.5s;
 }
 @keyframes textFadeIn {
   to {
-    opacity: 1;
+    opacity:1; 
     transform: scale(1);
   }
 }
 
-/* Стрелка */
+/* Стрелка вниз */
 .scroll-arrow {
   position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 30px; 
-  font-weight: 100;
-  color: #fff;
-  cursor: pointer;
+  bottom: 20px; 
+  left:50%;
+  transform:translateX(-50%);
+  font-size:30px;
+  font-weight:100;
+  color:#fff;
+  cursor:pointer;
   animation: bounce 2s infinite;
-  z-index: 3;
+  z-index:3;
 }
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
-  40% { transform: translate(-50%, 10px); }
-  60% { transform: translate(-50%, 5px); }
+  0%,20%,50%,80%,100% { transform:translate(-50%,0);}
+  40% { transform:translate(-50%,10px);}
+  60% { transform:translate(-50%,5px);}
 }
 
-/* Фоновые картинки для некоторых блоков */
-.block-1-bg {
+/* ФОН КАРТИНКИ */
+.block-1 {
   background: url('images/block1.jpg') center/cover no-repeat;
 }
-.block-2-bg {
+.block-2 {
   background: url('images/block2.jpg') center/cover no-repeat;
 }
-.block-3-bg {
+.block-3 {
   background: url('images/block3.jpg') center/cover no-repeat;
 }
-.block-4-bg {
+.block-4 {
   background: url('images/block4.jpg') center/cover no-repeat;
 }
-.block-8-bg {
+.block-8 {
   background: url('images/block8.jpg') center/cover no-repeat;
 }
-.block-13-bg {
+.block-13 {
   background: url('images/block13.jpg') center/cover no-repeat;
 }
 
-/* GIF на фоне (например, блоки 6,7,11) */
+/* GIF BLOCKI (6,7,11) */
 .gif-bg {
-  position: absolute;
-  top: 0; 
-  left: 0;
-  width: 100%; 
-  height: 100%;
-  z-index: 0;
-  overflow: hidden;
+  position:absolute; 
+  top:0; left:0; 
+  width:100%; 
+  height:100%; 
+  z-index:0;
 }
 .gif-bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
+  width:100%; 
+  height:100%; 
+  object-fit:cover; 
+  pointer-events:none;
 }
 
-/* Галерея (блоки 9 и 10) */
+/* ГАЛЕРЕЯ 9,10 */
+.block-9, .block-10 {
+  background:#202020;
+}
 .scrollable-gallery {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory; /* для "пролистывания" */
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: 10px;
+  display:flex;
+  gap:20px;
+  overflow-x:auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling:touch;
+  padding-bottom:10px;
 }
 .scrollable-gallery img {
-  width: 300px;
-  height: auto;
-  border-radius: 20%; /* 0.2 */
-  object-fit: cover;
-  cursor: zoom-in;
-  scroll-snap-align: start;
+  width:300px; 
+  height:auto; 
+  border-radius:20%;
+  object-fit:cover;
+  cursor:zoom-in;
+  scroll-snap-align:start;
 }
 
-/* Форма (блок 12) */
-.block-12 .form-block {
+/* ФОРМА (БЛОК 12) */
+.form-block {
   padding-bottom: 80px;
 }
 .form-group {
-  margin-bottom: 15px;
-  text-align: left;
+  margin-bottom:15px; text-align:left;
 }
 .form-group label {
-  display: block;
-  margin-bottom: 5px;
-  font-size: 16px;
+  display:block; margin-bottom:5px; font-size:16px;
 }
 .form-group input[type="text"] {
-  width: 100%;
-  padding: 8px;
-  font-size: 16px;
-  border: none;
-  border-radius: 4px;
-}
-.form-group input[type="radio"],
-.form-group input[type="checkbox"] {
-  margin-right: 5px;
+  width:100%; padding:8px; font-size:16px; 
+  border:none; border-radius:4px;
 }
 button[type="submit"] {
-  background: #ffcc00;
-  color: #000;
-  border: none;
-  padding: 10px 20px;
-  font-size: 18px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background 0.3s;
+  background:#ffcc00; 
+  color:#000;
+  border:none;
+  padding:10px 20px;
+  font-size:18px;
+  border-radius:4px;
+  cursor:pointer;
+  transition:background 0.3s;
 }
 button[type="submit"]:hover {
-  background: #e6b800;
+  background:#e6b800;
 }
 
-/* Модальное окно */
+/* МОДАЛЬНОЕ ОКНО */
 .modal {
-  display: none !important;
-  position: fixed;
-  z-index: 9999;
-  top: 0; 
-  left: 0;
-  width: 100%; 
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.9);
+  display:none !important;
+  position:fixed; 
+  top:0; left:0;
+  width:100%; 
+  height:100%;
+  overflow:auto;
+  background-color:rgba(0,0,0,0.9);
+  z-index:9999;
 }
 .modal-content {
-  margin: auto;
-  display: block;
-  max-width: 90%;
-  max-height: 80%;
+  margin:auto;
+  display:block;
+  max-width:90%;
+  max-height:80%;
 }
 .close {
-  position: absolute;
-  top: 20px;
-  right: 35px;
-  color: #fff;
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
+  position:absolute;
+  top:20px;
+  right:35px;
+  color:#fff;
+  font-size:40px;
+  font-weight:bold;
+  cursor:pointer;
 }
 .prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  padding: 16px;
-  margin-top: -50px;
-  color: #fff;
-  font-weight: bold;
-  font-size: 40px;
-  user-select: none;
+  cursor:pointer;
+  position:absolute;
+  top:50%;
+  padding:16px;
+  margin-top:-50px;
+  color:#fff;
+  font-weight:bold;
+  font-size:40px;
+  user-select:none;
 }
-.prev { left: 0; }
-.next { right: 0; }
+.prev { left:0; }
+.next { right:0; }
 
-/* Кнопка "Как добраться" */
+/* КНОПКА "КАК ДОБРАТЬСЯ" */
 .map-button {
-  display: inline-block;
-  background: #ffcc00;
-  color: #000;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 10px 20px;
-  border-radius: 4px;
+  display:inline-block;
+  background:#ffcc00;
+  color:#000;
+  text-decoration:none;
+  font-weight:bold;
+  padding:10px 20px;
+  border-radius:4px;
 }
 .map-button:hover {
-  background: #e6b800;
+  background:#e6b800;
 }
