@@ -177,6 +177,8 @@ p {
   gap: 20px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+  scroll-padding-left: 0;
+  -webkit-overflow-scrolling: touch;
   padding-bottom: 10px;
 }
 .scrollable-gallery img {
@@ -185,7 +187,7 @@ p {
   border-radius: 8px;
   scroll-snap-align: start;
   object-fit: cover;
-  cursor: zoom-in; /* курсор лупа при наведении */
+  cursor: zoom-in;
 }
 
 /* Блок 12: Дополнительный отступ для формы */
