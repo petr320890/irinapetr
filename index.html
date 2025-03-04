@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ирина &amp; Пётр — Свадьба</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Тест Scroll-Pin</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-<!-- МОДАЛЬНОЕ ОКНО (фото в блоках 9,10) -->
+<!-- Модальное окно -->
 <div id="image-modal" class="modal">
   <span class="close">&times;</span>
   <img class="modal-content" id="modal-img" alt="">
@@ -16,184 +16,39 @@
   <a class="next" onclick="changeModalImage(1)">&#10095;</a>
 </div>
 
-<!-- ОБОЛОЧКА ДЛЯ ВСЕХ БЛОКОВ -->
+<!-- Контейнер с нашими 3-мя блоками -->
 <div class="wrapper">
 
   <!-- БЛОК 1 -->
   <section class="panel block-1" style="z-index:1;">
     <div class="overlay"></div>
     <div class="content">
-      <h1 class="animate-text">Ирина &amp; Пётр</h1>
-      <p class="animate-text">Приглашают вас на свадьбу 🤍</p>
+      <h1>Блок 1</h1>
+      <p>Содержимое первого блока</p>
     </div>
     <div class="scroll-arrow" onclick="scrollManualToNext(0)">V</div>
   </section>
 
-  <!-- БЛОК 2 -->
+  <!-- БЛОК 2 (включим тут галерею, чтобы проверить модалку) -->
   <section class="panel block-2" style="z-index:2;">
     <div class="overlay"></div>
     <div class="content">
-      <h2>18.09.2025</h2>
-      <p>Этот день станет началом нашей долгой и счастливой семьи. Приглашаем на торжество!</p>
+      <h2>Блок 2 (Галерея)</h2>
+      <p>Ниже пара картинок, кликните, чтобы проверить модалку:</p>
+      <div class="scrollable-gallery">
+        <img src="images/test1.jpg" alt="Тест 1">
+        <img src="images/test2.jpg" alt="Тест 2">
+      </div>
     </div>
     <div class="scroll-arrow" onclick="scrollManualToNext(1)">V</div>
   </section>
 
-  <!-- БЛОК 3 (Таймер) -->
+  <!-- БЛОК 3 -->
   <section class="panel block-3" style="z-index:3;">
     <div class="overlay"></div>
     <div class="content">
-      <h2>До нашей свадьбы осталось:</h2>
-      <div id="countdown-timer">
-        <!-- удалён "Обратный отсчёт" -->
-        <div class="countdown-numbers">
-          <span id="days">00</span>д
-          <span id="hours">00</span>ч
-          <span id="minutes">00</span>м
-          <span id="seconds">00</span>с
-        </div>
-      </div>
-    </div>
-    <div class="scroll-arrow" onclick="scrollManualToNext(2)">V</div>
-  </section>
-
-  <!-- БЛОК 4 (Локация) -->
-  <section class="panel block-4" style="z-index:4;">
-    <div class="overlay"></div>
-    <div class="content">
-      <h2>Локация</h2>
-      <p>DUE TO LOVE</p>
-      <p><a href="https://yandex.ru/maps" target="_blank" class="map-button">Как добраться</a></p>
-    </div>
-    <div class="scroll-arrow" onclick="scrollManualToNext(3)">V</div>
-  </section>
-
-  <!-- БЛОК 5 -->
-  <section class="panel block-5" style="z-index:5;">
-    <div class="content">
-      <h2>Как добраться</h2>
-      <p>Опишите варианты транспорта, маршруты и т.п.</p>
-    </div>
-    <div class="scroll-arrow" onclick="scrollManualToNext(4)">V</div>
-  </section>
-
-  <!-- БЛОК 6 (GIF) -->
-  <section class="panel block-6" style="z-index:6;">
-    <div class="gif-bg">
-      <img src="images/video-replacement.gif" alt="">
-    </div>
-    <div class="content">
-      <h2>TIME LAIN</h2>
-      <p>Расскажите о распорядке дня: церемония, банкет, фотосессия...</p>
-    </div>
-    <div class="scroll-arrow" onclick="scrollManualToNext(5)">V</div>
-  </section>
-
-  <!-- БЛОК 7 (GIF) -->
-  <section class="panel block-7" style="z-index:7;">
-    <div class="gif-bg">
-      <img src="images/video-replacement.gif" alt="">
-    </div>
-    <div class="content">
-      <!-- убрали "Важная информация" -->
-      <p>К сожалению, из-за ограничений места, мы не можем пригласить детей.</p>
-    </div>
-    <div class="scroll-arrow" onclick="scrollManualToNext(6)">V</div>
-  </section>
-
-  <!-- БЛОК 8 (Дресс-код) -->
-  <section class="panel block-8" style="z-index:8;">
-    <div class="overlay"></div>
-    <div class="content">
-      <h2>Дресс-код</h2>
-      <p>Единая цветовая гамма, чёрно-белые/тёмные оттенки.</p>
-    </div>
-    <div class="scroll-arrow" onclick="scrollManualToNext(7)">V</div>
-  </section>
-
-  <!-- БЛОК 9 (Галерея: девушки) -->
-  <section class="panel block-9" style="z-index:9; background:#202020;">
-    <div class="content">
-      <h2>Для девушек</h2>
-      <p>Наряды чёрного цвета</p>
-      <div class="scrollable-gallery">
-        <img src="images/block9-1.jpg" alt="Пример 1">
-        <img src="images/block9-2.jpg" alt="Пример 2">
-        <img src="images/block9-3.jpg" alt="Пример 3">
-      </div>
-    </div>
-    <div class="scroll-arrow" onclick="scrollManualToNext(8)">V</div>
-  </section>
-
-  <!-- БЛОК 10 (Галерея: парни) -->
-  <section class="panel block-10" style="z-index:10; background:#202020;">
-    <div class="content">
-      <h2>Для парней</h2>
-      <p>Чёрно-белые образы</p>
-      <div class="scrollable-gallery">
-        <img src="images/block10-1.jpg" alt="Пример 1">
-        <img src="images/block10-2.jpg" alt="Пример 2">
-        <img src="images/block10-3.jpg" alt="Пример 3">
-      </div>
-    </div>
-    <div class="scroll-arrow" onclick="scrollManualToNext(9)">V</div>
-  </section>
-
-  <!-- БЛОК 11 (GIF) -->
-  <section class="panel block-11" style="z-index:11;">
-    <div class="gif-bg">
-      <img src="images/video-replacement.gif" alt="">
-    </div>
-    <div class="content">
-      <p>Возникнут вопросы — обращайтесь к организатору:</p>
-      <p>
-        <strong>Дарья</strong><br><br>
-        <a href="tel:+79991234567" style="color:#fff;margin-right:10px;">📞</a>
-        <a href="tg://resolve?domain=YourTelegram" style="color:#fff;margin-right:10px;">Telegram</a>
-        <a href="https://wa.me/79991234567" target="_blank" style="color:#fff;">WhatsApp</a>
-      </p>
-    </div>
-    <div class="scroll-arrow" onclick="scrollManualToNext(10)">V</div>
-  </section>
-
-  <!-- БЛОК 12 (Форма) -->
-  <section class="panel block-12" style="z-index:12;">
-    <div class="content form-block">
-      <h2>Подтверждение присутствия</h2>
-      <p>Просим подтвердить до 01.05.2025.</p>
-      <form id="rsvpForm">
-        <div class="form-group">
-          <label for="fullname">ФИО:</label>
-          <input type="text" id="fullname" name="fullname" required>
-        </div>
-        <div class="form-group">
-          <p>Будете ли присутствовать?</p>
-          <label><input type="radio" name="attendance" value="with_pleasure" required> Я с удовольствием</label><br>
-          <label><input type="radio" name="attendance" value="with_partner"> Буду с парой</label><br>
-          <label><input type="radio" name="attendance" value="cannot_attend"> Не смогу</label><br>
-          <label><input type="radio" name="attendance" value="will_inform_later"> Сообщу позже</label>
-        </div>
-        <div class="form-group">
-          <p>Что предпочитаете из напитков?</p>
-          <label><input type="checkbox" name="drinks" value="wine_red"> Красное вино</label><br>
-          <label><input type="checkbox" name="drinks" value="wine_white"> Белое вино</label><br>
-          <label><input type="checkbox" name="drinks" value="champagne"> Шампанское</label><br>
-          <label><input type="checkbox" name="drinks" value="vodka"> Водка</label><br>
-          <label><input type="checkbox" name="drinks" value="whiskey"> Виски</label><br>
-          <label><input type="checkbox" name="drinks" value="no_alco"> Не пью алкоголь</label>
-        </div>
-        <button type="submit">Отправить</button>
-      </form>
-    </div>
-    <div class="scroll-arrow" onclick="scrollManualToNext(11)">V</div>
-  </section>
-
-  <!-- БЛОК 13 (Финал) -->
-  <section class="panel block-13" style="z-index:13;">
-    <div class="overlay"></div>
-    <div class="content">
-      <h2>С нетерпением ждём вас!</h2>
-      <p>Ирина и Пётр</p>
+      <h2>Блок 3</h2>
+      <p>Конечный блок</p>
     </div>
   </section>
 
