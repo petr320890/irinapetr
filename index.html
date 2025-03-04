@@ -3,56 +3,69 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Тест Scroll-Pin</title>
+  <title>Ирина &amp; Пётр — Свадьба (рабочий скролл)</title>
+  <link rel="icon" href="data:,"> <!-- Пустая фавиконка -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-<!-- Модальное окно -->
-<div id="image-modal" class="modal">
-  <span class="close">&times;</span>
-  <img class="modal-content" id="modal-img" alt="">
-  <a class="prev" onclick="changeModalImage(-1)">&#10094;</a>
-  <a class="next" onclick="changeModalImage(1)">&#10095;</a>
-</div>
+<div class="blocks-container"><!-- Родитель с большой высотой -->
 
-<!-- Контейнер с нашими 3-мя блоками -->
-<div class="wrapper">
+  <!-- Модальное окно для увеличения изображений (пример для блоков 9 и 10) -->
+  <div id="image-modal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modal-img" alt="">
+    <a class="prev" onclick="changeModalImage(-1)">&#10094;</a>
+    <a class="next" onclick="changeModalImage(1)">&#10095;</a>
+  </div>
 
-  <!-- БЛОК 1 -->
-  <section class="panel block-1" style="z-index:1;">
+  <!-- БЛОК 1 (z-index:1) -->
+  <section class="block block-1" style="z-index:1;">
     <div class="overlay"></div>
     <div class="content">
       <h1>Блок 1</h1>
       <p>Содержимое первого блока</p>
     </div>
-    <div class="scroll-arrow" onclick="scrollManualToNext(0)">V</div>
+    <div class="scroll-arrow" onclick="scrollToNextBlock(this)">V</div>
   </section>
 
-  <!-- БЛОК 2 (включим тут галерею, чтобы проверить модалку) -->
-  <section class="panel block-2" style="z-index:2;">
+  <!-- БЛОК 2 (z-index:2) -->
+  <section class="block block-2" style="z-index:2;">
     <div class="overlay"></div>
     <div class="content">
-      <h2>Блок 2 (Галерея)</h2>
-      <p>Ниже пара картинок, кликните, чтобы проверить модалку:</p>
+      <h2>Блок 2</h2>
+      <p>Второй блок. При скролле следующий перекрывает этот.</p>
+    </div>
+    <div class="scroll-arrow" onclick="scrollToNextBlock(this)">V</div>
+  </section>
+
+  <!-- БЛОК 3 (Галерея, имитация вашего "блок 9") (z-index:3) -->
+  <section class="block block-9" style="z-index:3; background: #202020;">
+    <div class="content">
+      <h2>Блок 9 (пример галереи)</h2>
+      <p>Наряды для девушек</p>
       <div class="scrollable-gallery">
-        <img src="images/test1.jpg" alt="Тест 1">
-        <img src="images/test2.jpg" alt="Тест 2">
+        <img src="images/test1.jpg" alt="test1">
+        <img src="images/test2.jpg" alt="test2">
       </div>
     </div>
-    <div class="scroll-arrow" onclick="scrollManualToNext(1)">V</div>
+    <div class="scroll-arrow" onclick="scrollToNextBlock(this)">V</div>
   </section>
 
-  <!-- БЛОК 3 -->
-  <section class="panel block-3" style="z-index:3;">
-    <div class="overlay"></div>
+  <!-- БЛОК 4 (Галерея, имитация вашего "блок 10") (z-index:4) -->
+  <section class="block block-10" style="z-index:4; background: #202020;">
     <div class="content">
-      <h2>Блок 3</h2>
-      <p>Конечный блок</p>
+      <h2>Блок 10 (пример галереи)</h2>
+      <p>Наряды для парней</p>
+      <div class="scrollable-gallery">
+        <img src="images/test3.jpg" alt="test3">
+        <img src="images/test4.jpg" alt="test4">
+      </div>
     </div>
+    <div class="scroll-arrow" onclick="scrollToNextBlock(this)">V</div>
   </section>
 
-</div><!-- /wrapper -->
+</div><!-- /blocks-container -->
 
 <script src="script.js"></script>
 </body>
