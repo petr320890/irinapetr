@@ -41,7 +41,6 @@ function scrollToNextBlock(el) {
   var currentBlock = el.closest(".block");
   if (currentBlock) {
     var nextBlock = currentBlock.nextElementSibling;
-    // Если следующий блок существует и имеет класс .block
     if (nextBlock && nextBlock.classList.contains("block")) {
       nextBlock.scrollIntoView({ behavior: "smooth" });
     }
@@ -52,7 +51,6 @@ function scrollToNextBlock(el) {
 document.querySelectorAll(".block-9 .scrollable-gallery img, .block-10 .scrollable-gallery img")
 .forEach(function(img) {
   img.addEventListener("click", function() {
-    // Убедитесь, что эти селекторы совпадают с блоками 9 и 10
     document.getElementById("modal-img").src = this.src;
     document.getElementById("image-modal").style.display = "block";
   });
@@ -69,8 +67,6 @@ document.getElementById("image-modal").addEventListener("click", function(e) {
 // Обработка формы в Блоке 12
 document.getElementById("rsvpForm").addEventListener("submit", function(e) {
   e.preventDefault();
-  // Здесь можно собрать данные формы и отправить их на сервер через AJAX,
-  // или использовать mailto: в атрибуте action формы.
   alert("Спасибо за подтверждение присутствия!");
   this.reset();
 });
