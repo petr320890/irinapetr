@@ -63,7 +63,10 @@ document.querySelectorAll(".block-9 .scrollable-gallery img, .block-10 .scrollab
 });
 function openModal(index) {
   document.getElementById("modal-img").src = modalImages[index];
-  document.getElementById("image-modal").style.display = "block";
+  var modal = document.getElementById("image-modal");
+  modal.style.display = "block";
+  // Блокируем прокрутку страницы
+  document.body.style.overflow = "hidden";
 }
 function changeModalImage(direction) {
   modalCurrentIndex += direction;
@@ -77,10 +80,12 @@ function changeModalImage(direction) {
 }
 document.querySelector("#image-modal .close").addEventListener("click", function() {
   document.getElementById("image-modal").style.display = "none";
+  document.body.style.overflow = "auto";
 });
 document.getElementById("image-modal").addEventListener("click", function(e) {
   if (e.target === this) {
     this.style.display = "none";
+    document.body.style.overflow = "auto";
   }
 });
 
